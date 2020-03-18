@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FB7F2C6-E74F-44F2-97DB-18DDF23D80B4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.1.24312.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.1.24312.6\lib\net40\AdvancedDataGridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib\.net 4.0\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dbThesisComfamaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbThesisComfamaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dirClasses\ActivateAccount.cs" />
+    <Compile Include="dirClasses\Administrator.cs" />
+    <Compile Include="dirClasses\BackupRestore.cs" />
+    <Compile Include="dirClasses\Configuration.cs" />
+    <Compile Include="dirClasses\Database.cs" />
+    <Compile Include="dirClasses\Employee.cs" />
+    <Compile Include="dirClasses\FormAnimator.cs" />
+    <Compile Include="dirClasses\Inventory.cs" />
+    <Compile Include="dirClasses\Login.cs" />
+    <Compile Include="dirClasses\NativeMethods.cs" />
+    <Compile Include="dirClasses\Session.cs" />
+    <Compile Include="dirClasses\Settings.cs" />
+    <Compile Include="dirClasses\Student.cs" />
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddBusinessType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddBusinessType.designer.cs">
+      <DependentUpon>frmAddBusinessType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddCapacity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddCapacity.designer.cs">
+      <DependentUpon>frmAddCapacity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddCategories.designer.cs">
+      <DependentUpon>frmAddCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddInventoryType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddInventoryType.designer.cs">
+      <DependentUpon>frmAddInventoryType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddItems.Designer.cs">
+      <DependentUpon>frmAddItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddSupplier.designer.cs">
+      <DependentUpon>frmAddSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmAddUnit.designer.cs">
+      <DependentUpon>frmAddUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmViewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\InventoryManagement\frmViewItem.designer.cs">
+      <DependentUpon>frmViewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\FullControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\FullControl.Designer.cs">
+      <DependentUpon>FullControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\Settings\frmAddAcademicYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\Settings\frmAddAcademicYear.designer.cs">
+      <DependentUpon>frmAddAcademicYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddCourse.designer.cs">
+      <DependentUpon>frmAddCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddDepartment.designer.cs">
+      <DependentUpon>frmAddDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddEmployee.designer.cs">
+      <DependentUpon>frmAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddPosition.designer.cs">
+      <DependentUpon>frmAddPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmAddStudent.designer.cs">
+      <DependentUpon>frmAddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewCourse.Designer.cs">
+      <DependentUpon>frmViewCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewDepartment.Designer.cs">
+      <DependentUpon>frmViewDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\UserManagement\frmViewPosition.Designer.cs">
+      <DependentUpon>frmViewPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\BackupRestore\ucBackupRestore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\BackupRestore\ucBackupRestore.Designer.cs">
+      <DependentUpon>ucBackupRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Dashboard\ucDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Dashboard\ucDashboard.Designer.cs">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucHardware.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucHardware.Designer.cs">
+      <DependentUpon>ucHardware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryBusinessTypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryBusinessTypes.Designer.cs">
+      <DependentUpon>ucInventoryBusinessTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryCategories.Designer.cs">
+      <DependentUpon>ucInventoryCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryItems.Designer.cs">
+      <DependentUpon>ucInventoryItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryManagement.Designer.cs">
+      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventorySupplierList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventorySupplierList.Designer.cs">
+      <DependentUpon>ucInventorySupplierList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventorySuppliers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventorySuppliers.Designer.cs">
+      <DependentUpon>ucInventorySuppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryTypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucInventoryTypes.Designer.cs">
+      <DependentUpon>ucInventoryTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucSoftware.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\InventoryManagement\ucSoftware.Designer.cs">
+      <DependentUpon>ucSoftware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\RemoteManagement\ucRemoteManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\RemoteManagement\ucRemoteManagement.Designer.cs">
+      <DependentUpon>ucRemoteManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucAcademicYear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucAcademicYear.Designer.cs">
+      <DependentUpon>ucAcademicYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucSettings.Designer.cs">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucAccounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucAccounts.Designer.cs">
+      <DependentUpon>ucAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucEmployees.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucEmployees.Designer.cs">
+      <DependentUpon>ucEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucStudents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucStudents.Designer.cs">
+      <DependentUpon>ucStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucUserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\UserManagement\ucUserManagement.Designer.cs">
+      <DependentUpon>ucUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmActivateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActivateAccount.designer.cs">
+      <DependentUpon>frmActivateAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateAdministrator.designer.cs">
+      <DependentUpon>frmCreateAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetup.designer.cs">
+      <DependentUpon>frmSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplashScreen.designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification.designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddBusinessType.resx">
+      <DependentUpon>frmAddBusinessType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddCapacity.resx">
+      <DependentUpon>frmAddCapacity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddCategories.resx">
+      <DependentUpon>frmAddCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddInventoryType.resx">
+      <DependentUpon>frmAddInventoryType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddItems.resx">
+      <DependentUpon>frmAddItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddSupplier.resx">
+      <DependentUpon>frmAddSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmAddUnit.resx">
+      <DependentUpon>frmAddUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmViewItem.resx">
+      <DependentUpon>frmViewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\RemoteManagement\FullControl.resx">
+      <DependentUpon>FullControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\Settings\frmAddAcademicYear.resx">
+      <DependentUpon>frmAddAcademicYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmAddCourse.resx">
+      <DependentUpon>frmAddCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmAddDepartment.resx">
+      <DependentUpon>frmAddDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmAddEmployee.resx">
+      <DependentUpon>frmAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmAddPosition.resx">
+      <DependentUpon>frmAddPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmAddStudent.resx">
+      <DependentUpon>frmAddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmViewCourse.resx">
+      <DependentUpon>frmViewCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmViewDepartment.resx">
+      <DependentUpon>frmViewDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\UserManagement\frmViewPosition.resx">
+      <DependentUpon>frmViewPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\BackupRestore\ucBackupRestore.resx">
+      <DependentUpon>ucBackupRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Dashboard\ucDashboard.resx">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucHardware.resx">
+      <DependentUpon>ucHardware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventoryBusinessTypes.resx">
+      <DependentUpon>ucInventoryBusinessTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventoryCategories.resx">
+      <DependentUpon>ucInventoryCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventoryItems.resx">
+      <DependentUpon>ucInventoryItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventoryManagement.resx">
+      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventorySupplierList.resx">
+      <DependentUpon>ucInventorySupplierList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventorySuppliers.resx">
+      <DependentUpon>ucInventorySuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucInventoryTypes.resx">
+      <DependentUpon>ucInventoryTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\InventoryManagement\ucSoftware.resx">
+      <DependentUpon>ucSoftware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\RemoteManagement\ucRemoteManagement.resx">
+      <DependentUpon>ucRemoteManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Settings\ucAcademicYear.resx">
+      <DependentUpon>ucAcademicYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Settings\ucSettings.resx">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\UserManagement\ucAccounts.resx">
+      <DependentUpon>ucAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\UserManagement\ucEmployees.resx">
+      <DependentUpon>ucEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\UserManagement\ucStudents.resx">
+      <DependentUpon>ucStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\UserManagement\ucUserManagement.resx">
+      <DependentUpon>ucUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmActivateAccount.resx">
+      <DependentUpon>frmActivateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateAdministrator.resx">
+      <DependentUpon>frmCreateAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetup.resx">
+      <DependentUpon>frmSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="dbThesisComfamaDataSet.xsc">
+      <DependentUpon>dbThesisComfamaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbThesisComfamaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbThesisComfamaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbThesisComfamaDataSet.xss">
+      <DependentUpon>dbThesisComfamaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comfama icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comfama logo for icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comfama logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\composing_mail_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cvsu banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cvsu logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facebook_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facebook_messenger_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facebook_messenger_25px_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gmail_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_25px_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\offline computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\placeholder.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Portrait_Placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMSTSCLib">
+      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MSTSCLib">
+      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
