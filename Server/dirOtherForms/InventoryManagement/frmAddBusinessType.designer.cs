@@ -30,40 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddBusinessType));
-            this.txtBusinessType = new Guna.UI.WinForms.GunaTextBox();
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
+            this.txtBusinessType = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
-            this.btnCancel = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnAddBusinessType = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnCancel = new Guna.UI.WinForms.GunaAdvenceButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtBusinessType
-            // 
-            this.txtBusinessType.BackColor = System.Drawing.Color.Transparent;
-            this.txtBusinessType.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.txtBusinessType.BorderColor = System.Drawing.Color.Silver;
-            this.txtBusinessType.BorderSize = 1;
-            this.txtBusinessType.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBusinessType.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtBusinessType.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.txtBusinessType.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBusinessType.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusinessType.Location = new System.Drawing.Point(161, 103);
-            this.txtBusinessType.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBusinessType.Name = "txtBusinessType";
-            this.txtBusinessType.PasswordChar = '\0';
-            this.txtBusinessType.Size = new System.Drawing.Size(305, 34);
-            this.txtBusinessType.TabIndex = 1;
-            this.txtBusinessType.Text = "Business Type";
-            this.txtBusinessType.TextOffsetX = 5;
-            this.txtBusinessType.Enter += new System.EventHandler(this.txtBusinessType_Enter);
-            this.txtBusinessType.Leave += new System.EventHandler(this.txtBusinessType_Leave);
             // 
             // gunaDragControl1
             // 
@@ -152,6 +130,28 @@
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
             this.gunaControlBox1.TabIndex = 43;
             // 
+            // txtBusinessType
+            // 
+            this.txtBusinessType.BackColor = System.Drawing.Color.Transparent;
+            this.txtBusinessType.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.txtBusinessType.BorderColor = System.Drawing.Color.Silver;
+            this.txtBusinessType.BorderSize = 1;
+            this.txtBusinessType.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBusinessType.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtBusinessType.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.txtBusinessType.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBusinessType.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusinessType.Location = new System.Drawing.Point(161, 103);
+            this.txtBusinessType.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBusinessType.Name = "txtBusinessType";
+            this.txtBusinessType.PasswordChar = '\0';
+            this.txtBusinessType.Size = new System.Drawing.Size(305, 34);
+            this.txtBusinessType.TabIndex = 1;
+            this.txtBusinessType.Text = "Business Type";
+            this.txtBusinessType.TextOffsetX = 5;
+            this.txtBusinessType.Enter += new System.EventHandler(this.txtBusinessType_Enter);
+            this.txtBusinessType.Leave += new System.EventHandler(this.txtBusinessType_Leave);
+            // 
             // gunaLabel3
             // 
             this.gunaLabel3.AutoSize = true;
@@ -162,40 +162,6 @@
             this.gunaLabel3.Size = new System.Drawing.Size(89, 16);
             this.gunaLabel3.TabIndex = 63;
             this.gunaLabel3.Text = "BUSINESS TYPE";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AnimationHoverSpeed = 0.07F;
-            this.btnCancel.AnimationSpeed = 0.03F;
-            this.btnCancel.BaseColor = System.Drawing.Color.White;
-            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.btnCancel.BorderSize = 1;
-            this.btnCancel.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.btnCancel.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnCancel.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnCancel.CheckedImage = null;
-            this.btnCancel.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.FocusedColor = System.Drawing.Color.Empty;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnCancel.Image = null;
-            this.btnCancel.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCancel.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnCancel.Location = new System.Drawing.Point(161, 151);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnCancel.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnCancel.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnCancel.OnHoverImage = null;
-            this.btnCancel.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnCancel.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCancel.Size = new System.Drawing.Size(127, 35);
-            this.btnCancel.TabIndex = 65;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAddBusinessType
             // 
@@ -232,6 +198,40 @@
             this.btnAddBusinessType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAddBusinessType.Click += new System.EventHandler(this.btnAddBusinessType_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.AnimationHoverSpeed = 0.07F;
+            this.btnCancel.AnimationSpeed = 0.03F;
+            this.btnCancel.BaseColor = System.Drawing.Color.White;
+            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnCancel.BorderSize = 1;
+            this.btnCancel.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnCancel.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnCancel.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnCancel.CheckedImage = null;
+            this.btnCancel.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnCancel.Image = null;
+            this.btnCancel.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnCancel.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnCancel.Location = new System.Drawing.Point(161, 151);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnCancel.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnCancel.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnCancel.OnHoverImage = null;
+            this.btnCancel.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnCancel.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCancel.Size = new System.Drawing.Size(127, 35);
+            this.btnCancel.TabIndex = 65;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmAddBusinessType
             // 
             this.AcceptButton = this.btnAddBusinessType;
@@ -258,15 +258,15 @@
 
         #endregion
 
-        private Guna.UI.WinForms.GunaTextBox txtBusinessType;
         private Guna.UI.WinForms.GunaDragControl gunaDragControl1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton1;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
+        private Guna.UI.WinForms.GunaTextBox txtBusinessType;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
-        private Guna.UI.WinForms.GunaAdvenceButton btnCancel;
         private Guna.UI.WinForms.GunaAdvenceButton btnAddBusinessType;
+        private Guna.UI.WinForms.GunaAdvenceButton btnCancel;
     }
 }

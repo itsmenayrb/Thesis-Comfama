@@ -6,21 +6,28 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Server.dirUserControl.InventoryManagement
 {
     public partial class ucInventoryBusinessTypes : UserControl
     {
         public static ucInventoryBusinessTypes mainInstance = null;
+        public string connectionString = string.Empty;
+        public string query = string.Empty;
+
         public ucInventoryBusinessTypes()
         {
             mainInstance = this;
             InitializeComponent();
+            dirClasses.Database database = new dirClasses.Database();
+            this.connectionString = database.dbConnection();
         }
 
         private void ucInventoryBusinessTypes_Load(object sender, EventArgs e)
         {
             loadData();
+            loadInventoryBusinessTypeCount();
         }
 
         private void btnAddBusinessType_Click(object sender, EventArgs e)
@@ -67,6 +74,31 @@ namespace Server.dirUserControl.InventoryManagement
         public void loadData()
         {
             this.inventoryBusinessTypesTableAdapter.Fill(this.dbThesisComfamaDataSet.InventoryBusinessTypes);
+        }
+
+        public void loadInventoryBusinessTypeCount()
+        {
+            try
+            {
+                this.query = "SELECT COUNT(*) as businessTypeCount FROM InventoryBusinessTypes";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lblTotalSupplierCount.Text = reader["businessTypeCount"].ToString();
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading supplier: " + ex.Message, "Add Item");
+            }
         }
     }
 }

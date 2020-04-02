@@ -37,12 +37,19 @@
       <HintPath>..\packages\DG.AdvancedDataGridView.1.1.24312.6\lib\net40\AdvancedDataGridView.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoClosingMessageBox, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClosingMessageBox.1.0.0.2\lib\net40\AutoClosingMessageBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\..\..\Downloads\Compressed\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,17 +67,23 @@
     </Compile>
     <Compile Include="dirClasses\ActivateAccount.cs" />
     <Compile Include="dirClasses\Administrator.cs" />
+    <Compile Include="dirClasses\AuditTrail.cs" />
     <Compile Include="dirClasses\BackupRestore.cs" />
+    <Compile Include="dirClasses\CaptureScreen.cs" />
     <Compile Include="dirClasses\Configuration.cs" />
     <Compile Include="dirClasses\Database.cs" />
     <Compile Include="dirClasses\Employee.cs" />
     <Compile Include="dirClasses\FormAnimator.cs" />
+    <Compile Include="dirClasses\GDI.cs" />
     <Compile Include="dirClasses\Inventory.cs" />
     <Compile Include="dirClasses\Login.cs" />
+    <Compile Include="dirClasses\Message.cs" />
     <Compile Include="dirClasses\NativeMethods.cs" />
     <Compile Include="dirClasses\Session.cs" />
     <Compile Include="dirClasses\Settings.cs" />
     <Compile Include="dirClasses\Student.cs" />
+    <Compile Include="dirClasses\SubmitFeedback.cs" />
+    <Compile Include="dirClasses\Win32.cs" />
     <Compile Include="dirOtherForms\InventoryManagement\frmAddBusinessType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +132,41 @@
     <Compile Include="dirOtherForms\InventoryManagement\frmViewItem.designer.cs">
       <DependentUpon>frmViewItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="dirOtherForms\MaintenanceReport\frmFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\MaintenanceReport\frmFeedback.Designer.cs">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\MaintenanceReport\frmViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\MaintenanceReport\frmViewReport.Designer.cs">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="dirOtherForms\RemoteManagement\FullControl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dirOtherForms\RemoteManagement\FullControl.Designer.cs">
       <DependentUpon>FullControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\LectureMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\LectureMode.Designer.cs">
+      <DependentUpon>LectureMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\LectureModePlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\LectureModePlayer.Designer.cs">
+      <DependentUpon>LectureModePlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\ViewOnly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirOtherForms\RemoteManagement\ViewOnly.Designer.cs">
+      <DependentUpon>ViewOnly.cs</DependentUpon>
     </Compile>
     <Compile Include="dirOtherForms\Settings\frmAddAcademicYear.cs">
       <SubType>Form</SubType>
@@ -178,6 +221,42 @@
     </Compile>
     <Compile Include="dirOtherForms\UserManagement\frmViewPosition.Designer.cs">
       <DependentUpon>frmViewPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirReports\InventoryManagement\frmGenerateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dirReports\InventoryManagement\frmGenerateReport.Designer.cs">
+      <DependentUpon>frmGenerateReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucArchived.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucArchived.Designer.cs">
+      <DependentUpon>ucArchived.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucInventoryManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucInventoryManagement.Designer.cs">
+      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucLoginHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucLoginHistory.Designer.cs">
+      <DependentUpon>ucLoginHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucMaintenanceReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Archived\ucMaintenanceReport.Designer.cs">
+      <DependentUpon>ucMaintenanceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\AuditTrail\ucAuditTrail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\AuditTrail\ucAuditTrail.Designer.cs">
+      <DependentUpon>ucAuditTrail.cs</DependentUpon>
     </Compile>
     <Compile Include="dirUserControl\BackupRestore\ucBackupRestore.cs">
       <SubType>UserControl</SubType>
@@ -245,6 +324,42 @@
     <Compile Include="dirUserControl\InventoryManagement\ucSoftware.Designer.cs">
       <DependentUpon>ucSoftware.cs</DependentUpon>
     </Compile>
+    <Compile Include="dirUserControl\LoginHistory\ucLoginHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\LoginHistory\ucLoginHistory.Designer.cs">
+      <DependentUpon>ucLoginHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\MaintenanceReport\ucMaintenanceReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\MaintenanceReport\ucMaintenanceReport.Designer.cs">
+      <DependentUpon>ucMaintenanceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucBubble.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucBubble.Designer.cs">
+      <DependentUpon>ucBubble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucNewMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucNewMessage.Designer.cs">
+      <DependentUpon>ucNewMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucOldMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Messages\ucOldMessage.Designer.cs">
+      <DependentUpon>ucOldMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\RemoteManagement\ucDetailedView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\RemoteManagement\ucDetailedView.Designer.cs">
+      <DependentUpon>ucDetailedView.cs</DependentUpon>
+    </Compile>
     <Compile Include="dirUserControl\RemoteManagement\ucRemoteManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -311,6 +426,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessages.Designer.cs">
+      <DependentUpon>frmMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,8 +481,23 @@
     <EmbeddedResource Include="dirOtherForms\InventoryManagement\frmViewItem.resx">
       <DependentUpon>frmViewItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\MaintenanceReport\frmFeedback.resx">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\MaintenanceReport\frmViewReport.resx">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dirOtherForms\RemoteManagement\FullControl.resx">
       <DependentUpon>FullControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\RemoteManagement\LectureMode.resx">
+      <DependentUpon>LectureMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\RemoteManagement\LectureModePlayer.resx">
+      <DependentUpon>LectureModePlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirOtherForms\RemoteManagement\ViewOnly.resx">
+      <DependentUpon>ViewOnly.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dirOtherForms\Settings\frmAddAcademicYear.resx">
       <DependentUpon>frmAddAcademicYear.cs</DependentUpon>
@@ -389,6 +525,25 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dirOtherForms\UserManagement\frmViewPosition.resx">
       <DependentUpon>frmViewPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirReports\InventoryManagement\frmGenerateReport.resx">
+      <DependentUpon>frmGenerateReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirReports\InventoryManagement\InventoryManagementReport.rdlc" />
+    <EmbeddedResource Include="dirUserControl\Archived\ucArchived.resx">
+      <DependentUpon>ucArchived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Archived\ucInventoryManagement.resx">
+      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Archived\ucLoginHistory.resx">
+      <DependentUpon>ucLoginHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Archived\ucMaintenanceReport.resx">
+      <DependentUpon>ucMaintenanceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\AuditTrail\ucAuditTrail.resx">
+      <DependentUpon>ucAuditTrail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\BackupRestore\ucBackupRestore.resx">
       <DependentUpon>ucBackupRestore.cs</DependentUpon>
@@ -423,6 +578,24 @@
     <EmbeddedResource Include="dirUserControl\InventoryManagement\ucSoftware.resx">
       <DependentUpon>ucSoftware.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\LoginHistory\ucLoginHistory.resx">
+      <DependentUpon>ucLoginHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\MaintenanceReport\ucMaintenanceReport.resx">
+      <DependentUpon>ucMaintenanceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Messages\ucBubble.resx">
+      <DependentUpon>ucBubble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Messages\ucNewMessage.resx">
+      <DependentUpon>ucNewMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Messages\ucOldMessage.resx">
+      <DependentUpon>ucOldMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\RemoteManagement\ucDetailedView.resx">
+      <DependentUpon>ucDetailedView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\RemoteManagement\ucRemoteManagement.resx">
       <DependentUpon>ucRemoteManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -455,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessages.resx">
+      <DependentUpon>frmMessages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSetup.resx">
       <DependentUpon>frmSetup.cs</DependentUpon>
@@ -594,6 +770,48 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sidebar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kuya logo 1.2_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chevron_right_50px_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chevron_left_50px_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resume_button_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box_important_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google_analytics_logo_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time_machine_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick_box_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

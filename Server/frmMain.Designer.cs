@@ -32,13 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.panelTop = new System.Windows.Forms.Panel();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
             this.btnMessages = new Guna.UI.WinForms.GunaAdvenceButton();
             this.txtSearch = new Guna.UI.WinForms.GunaTextBox();
             this.btnSearch = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnShutdown = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.panelSide = new System.Windows.Forms.Panel();
+            this.btnAuditTrail = new Guna.UI.WinForms.GunaAdvenceButton();
             this.lblEmployeeID = new Guna.UI.WinForms.GunaLabel();
             this.lblName = new Guna.UI.WinForms.GunaLabel();
             this.pbProfilePicture = new Guna.UI.WinForms.GunaCirclePictureBox();
@@ -46,12 +48,17 @@
             this.btnArchived = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnBackupAndRestore = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnManageUsers = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.btnActivityLogs = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnLoginHistory = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnMaintenanceReport = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnInventoryManagement = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnRemoteManagement = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnDashboard = new Guna.UI.WinForms.GunaAdvenceButton();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.ucAuditTrail1 = new Server.dirUserControl.AuditTrail.ucAuditTrail();
+            this.ucArchived1 = new Server.dirUserControl.Archived.ucArchived();
+            this.ucLoginHistory1 = new Server.dirUserControl.LoginHistory.ucLoginHistory();
+            this.ucMaintenanceReport1 = new Server.dirUserControl.MaintenanceReport.ucMaintenanceReport();
+            this.ucSettings1 = new Server.dirUserControl.Settings.ucSettings();
             this.ucBackupRestore1 = new Server.dirUserControl.BackupRestore.ucBackupRestore();
             this.ucRemoteManagement1 = new Server.dirUserControl.RemoteManagement.ucRemoteManagement();
             this.ucUserManagement1 = new Server.dirUserControl.UserManagement.ucUserManagement();
@@ -62,8 +69,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ucSettings1 = new Server.dirUserControl.Settings.ucSettings();
+            this.timerIncomingRequest = new System.Windows.Forms.Timer(this.components);
+            this.timerCastScreenToClient = new System.Windows.Forms.Timer(this.components);
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
             this.panelSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePicture)).BeginInit();
             this.panelContainer.SuspendLayout();
@@ -76,24 +85,65 @@
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelTop.BackgroundImage")));
+            this.panelTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelTop.Controls.Add(this.gunaLabel2);
+            this.panelTop.Controls.Add(this.gunaLabel1);
+            this.panelTop.Controls.Add(this.gunaPictureBox1);
             this.panelTop.Controls.Add(this.btnMessages);
             this.panelTop.Controls.Add(this.txtSearch);
             this.panelTop.Controls.Add(this.btnSearch);
             this.panelTop.Controls.Add(this.btnShutdown);
-            this.panelTop.Controls.Add(this.gunaLabel2);
-            this.panelTop.Controls.Add(this.gunaLabel1);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(283, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1417, 102);
             this.panelTop.TabIndex = 1;
             // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaLabel2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel2.ForeColor = System.Drawing.Color.White;
+            this.gunaLabel2.Location = new System.Drawing.Point(28, 78);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(757, 21);
+            this.gunaLabel2.TabIndex = 1;
+            this.gunaLabel2.Text = "A Network-Based Computer Facilities and Inventory Management with Decision Suppor" +
+    "t System";
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
+            this.gunaLabel1.Location = new System.Drawing.Point(20, 37);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(218, 44);
+            this.gunaLabel1.TabIndex = 0;
+            this.gunaLabel1.Text = "COMFAMA";
+            // 
+            // gunaPictureBox1
+            // 
+            this.gunaPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaPictureBox1.BaseColor = System.Drawing.Color.Transparent;
+            this.gunaPictureBox1.Image = global::Server.Resource1.kuya_logo_1_2_white;
+            this.gunaPictureBox1.Location = new System.Drawing.Point(180, 1);
+            this.gunaPictureBox1.Name = "gunaPictureBox1";
+            this.gunaPictureBox1.Size = new System.Drawing.Size(155, 153);
+            this.gunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaPictureBox1.TabIndex = 20;
+            this.gunaPictureBox1.TabStop = false;
+            // 
             // btnMessages
             // 
             this.btnMessages.AnimationHoverSpeed = 0.07F;
             this.btnMessages.AnimationSpeed = 0.03F;
-            this.btnMessages.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnMessages.BackColor = System.Drawing.Color.Transparent;
+            this.btnMessages.BaseColor = System.Drawing.Color.Transparent;
             this.btnMessages.BorderColor = System.Drawing.Color.Black;
             this.btnMessages.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
             this.btnMessages.CheckedBorderColor = System.Drawing.Color.Black;
@@ -111,15 +161,16 @@
             this.btnMessages.Location = new System.Drawing.Point(1308, 37);
             this.btnMessages.Margin = new System.Windows.Forms.Padding(0);
             this.btnMessages.Name = "btnMessages";
-            this.btnMessages.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnMessages.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.btnMessages.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnMessages.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
             this.btnMessages.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnMessages.OnHoverImage")));
             this.btnMessages.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnMessages.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnMessages.OnPressedColor = System.Drawing.Color.Transparent;
             this.btnMessages.Size = new System.Drawing.Size(38, 41);
             this.btnMessages.TabIndex = 5;
             this.btnMessages.TextOffsetX = 10;
+            this.btnMessages.Click += new System.EventHandler(this.btnMessages_Click);
             // 
             // txtSearch
             // 
@@ -146,7 +197,8 @@
             // 
             this.btnSearch.AnimationHoverSpeed = 0.07F;
             this.btnSearch.AnimationSpeed = 0.03F;
-            this.btnSearch.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BaseColor = System.Drawing.Color.Transparent;
             this.btnSearch.BorderColor = System.Drawing.Color.Black;
             this.btnSearch.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
             this.btnSearch.CheckedBorderColor = System.Drawing.Color.Black;
@@ -164,12 +216,12 @@
             this.btnSearch.Location = new System.Drawing.Point(1270, 37);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSearch.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.btnSearch.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnSearch.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
             this.btnSearch.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.OnHoverImage")));
             this.btnSearch.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnSearch.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSearch.OnPressedColor = System.Drawing.Color.Transparent;
             this.btnSearch.Size = new System.Drawing.Size(38, 41);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.TextOffsetX = 10;
@@ -179,7 +231,8 @@
             // 
             this.btnShutdown.AnimationHoverSpeed = 0.07F;
             this.btnShutdown.AnimationSpeed = 0.03F;
-            this.btnShutdown.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnShutdown.BackColor = System.Drawing.Color.Transparent;
+            this.btnShutdown.BaseColor = System.Drawing.Color.Transparent;
             this.btnShutdown.BorderColor = System.Drawing.Color.Black;
             this.btnShutdown.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
             this.btnShutdown.CheckedBorderColor = System.Drawing.Color.Black;
@@ -197,43 +250,22 @@
             this.btnShutdown.Location = new System.Drawing.Point(1346, 37);
             this.btnShutdown.Margin = new System.Windows.Forms.Padding(0);
             this.btnShutdown.Name = "btnShutdown";
-            this.btnShutdown.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnShutdown.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.btnShutdown.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnShutdown.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
             this.btnShutdown.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnShutdown.OnHoverImage")));
             this.btnShutdown.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnShutdown.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnShutdown.OnPressedColor = System.Drawing.Color.Transparent;
             this.btnShutdown.Size = new System.Drawing.Size(38, 41);
             this.btnShutdown.TabIndex = 2;
             this.btnShutdown.TextOffsetX = 10;
             this.btnShutdown.Click += new System.EventHandler(this.btnShutdown_Click);
             // 
-            // gunaLabel2
-            // 
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel2.Location = new System.Drawing.Point(28, 78);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(757, 21);
-            this.gunaLabel2.TabIndex = 1;
-            this.gunaLabel2.Text = "A Network-Based Computer Facilities and Inventory Management with Decision Suppor" +
-    "t System";
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel1.Location = new System.Drawing.Point(20, 34);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(216, 44);
-            this.gunaLabel1.TabIndex = 0;
-            this.gunaLabel1.Text = "COMFAMA";
-            // 
             // panelSide
             // 
             this.panelSide.BackColor = System.Drawing.Color.White;
+            this.panelSide.BackgroundImage = global::Server.Resource1.sidebar;
+            this.panelSide.Controls.Add(this.btnAuditTrail);
             this.panelSide.Controls.Add(this.lblEmployeeID);
             this.panelSide.Controls.Add(this.lblName);
             this.panelSide.Controls.Add(this.pbProfilePicture);
@@ -241,7 +273,7 @@
             this.panelSide.Controls.Add(this.btnArchived);
             this.panelSide.Controls.Add(this.btnBackupAndRestore);
             this.panelSide.Controls.Add(this.btnManageUsers);
-            this.panelSide.Controls.Add(this.btnActivityLogs);
+            this.panelSide.Controls.Add(this.btnLoginHistory);
             this.panelSide.Controls.Add(this.btnMaintenanceReport);
             this.panelSide.Controls.Add(this.btnInventoryManagement);
             this.panelSide.Controls.Add(this.btnRemoteManagement);
@@ -252,12 +284,48 @@
             this.panelSide.Size = new System.Drawing.Size(283, 950);
             this.panelSide.TabIndex = 0;
             // 
+            // btnAuditTrail
+            // 
+            this.btnAuditTrail.AnimationHoverSpeed = 0.07F;
+            this.btnAuditTrail.AnimationSpeed = 0.03F;
+            this.btnAuditTrail.BaseColor = System.Drawing.Color.White;
+            this.btnAuditTrail.BorderColor = System.Drawing.Color.Black;
+            this.btnAuditTrail.ButtonType = Guna.UI.WinForms.AdvenceButtonType.RadioButton;
+            this.btnAuditTrail.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnAuditTrail.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnAuditTrail.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnAuditTrail.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnAuditTrail.CheckedImage")));
+            this.btnAuditTrail.CheckedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnAuditTrail.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAuditTrail.FocusedColor = System.Drawing.Color.Empty;
+            this.btnAuditTrail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuditTrail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnAuditTrail.Image = ((System.Drawing.Image)(resources.GetObject("btnAuditTrail.Image")));
+            this.btnAuditTrail.ImageOffsetX = 20;
+            this.btnAuditTrail.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnAuditTrail.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnAuditTrail.Location = new System.Drawing.Point(0, 693);
+            this.btnAuditTrail.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAuditTrail.Name = "btnAuditTrail";
+            this.btnAuditTrail.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAuditTrail.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnAuditTrail.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnAuditTrail.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnAuditTrail.OnHoverImage")));
+            this.btnAuditTrail.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnAuditTrail.OnPressedColor = System.Drawing.Color.Black;
+            this.btnAuditTrail.Size = new System.Drawing.Size(283, 67);
+            this.btnAuditTrail.TabIndex = 20;
+            this.btnAuditTrail.Text = "Audit Trail";
+            this.btnAuditTrail.TextOffsetX = 10;
+            this.btnAuditTrail.Click += new System.EventHandler(this.btnAuditTrail_Click);
+            // 
             // lblEmployeeID
             // 
             this.lblEmployeeID.AutoSize = true;
+            this.lblEmployeeID.BackColor = System.Drawing.Color.Transparent;
             this.lblEmployeeID.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeeID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.lblEmployeeID.Location = new System.Drawing.Point(23, 133);
+            this.lblEmployeeID.ForeColor = System.Drawing.Color.White;
+            this.lblEmployeeID.Location = new System.Drawing.Point(18, 142);
             this.lblEmployeeID.Name = "lblEmployeeID";
             this.lblEmployeeID.Size = new System.Drawing.Size(45, 17);
             this.lblEmployeeID.TabIndex = 19;
@@ -266,10 +334,11 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblName.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.lblName.Location = new System.Drawing.Point(23, 116);
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(18, 125);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(137, 17);
             this.lblName.TabIndex = 18;
@@ -277,9 +346,10 @@
             // 
             // pbProfilePicture
             // 
-            this.pbProfilePicture.BaseColor = System.Drawing.Color.White;
+            this.pbProfilePicture.BackColor = System.Drawing.Color.Transparent;
+            this.pbProfilePicture.BaseColor = System.Drawing.Color.Transparent;
             this.pbProfilePicture.Image = global::Server.Resource1.Portrait_Placeholder;
-            this.pbProfilePicture.Location = new System.Drawing.Point(26, 19);
+            this.pbProfilePicture.Location = new System.Drawing.Point(21, 28);
             this.pbProfilePicture.Name = "pbProfilePicture";
             this.pbProfilePicture.Size = new System.Drawing.Size(99, 94);
             this.pbProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -307,7 +377,7 @@
             this.btnAbout.ImageOffsetX = 20;
             this.btnAbout.ImageSize = new System.Drawing.Size(30, 30);
             this.btnAbout.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnAbout.Location = new System.Drawing.Point(0, 789);
+            this.btnAbout.Location = new System.Drawing.Point(0, 827);
             this.btnAbout.Margin = new System.Windows.Forms.Padding(0);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -342,7 +412,7 @@
             this.btnArchived.ImageOffsetX = 20;
             this.btnArchived.ImageSize = new System.Drawing.Size(30, 30);
             this.btnArchived.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnArchived.Location = new System.Drawing.Point(0, 722);
+            this.btnArchived.Location = new System.Drawing.Point(0, 760);
             this.btnArchived.Margin = new System.Windows.Forms.Padding(0);
             this.btnArchived.Name = "btnArchived";
             this.btnArchived.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -377,7 +447,7 @@
             this.btnBackupAndRestore.ImageOffsetX = 20;
             this.btnBackupAndRestore.ImageSize = new System.Drawing.Size(30, 30);
             this.btnBackupAndRestore.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnBackupAndRestore.Location = new System.Drawing.Point(0, 655);
+            this.btnBackupAndRestore.Location = new System.Drawing.Point(0, 626);
             this.btnBackupAndRestore.Margin = new System.Windows.Forms.Padding(0);
             this.btnBackupAndRestore.Name = "btnBackupAndRestore";
             this.btnBackupAndRestore.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -412,7 +482,7 @@
             this.btnManageUsers.ImageOffsetX = 20;
             this.btnManageUsers.ImageSize = new System.Drawing.Size(30, 30);
             this.btnManageUsers.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnManageUsers.Location = new System.Drawing.Point(0, 588);
+            this.btnManageUsers.Location = new System.Drawing.Point(0, 559);
             this.btnManageUsers.Margin = new System.Windows.Forms.Padding(0);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -427,40 +497,40 @@
             this.btnManageUsers.TextOffsetX = 10;
             this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
-            // btnActivityLogs
+            // btnLoginHistory
             // 
-            this.btnActivityLogs.AnimationHoverSpeed = 0.07F;
-            this.btnActivityLogs.AnimationSpeed = 0.03F;
-            this.btnActivityLogs.BaseColor = System.Drawing.Color.White;
-            this.btnActivityLogs.BorderColor = System.Drawing.Color.Black;
-            this.btnActivityLogs.ButtonType = Guna.UI.WinForms.AdvenceButtonType.RadioButton;
-            this.btnActivityLogs.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.btnActivityLogs.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnActivityLogs.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnActivityLogs.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnActivityLogs.CheckedImage")));
-            this.btnActivityLogs.CheckedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnActivityLogs.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnActivityLogs.FocusedColor = System.Drawing.Color.Empty;
-            this.btnActivityLogs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActivityLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnActivityLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnActivityLogs.Image")));
-            this.btnActivityLogs.ImageOffsetX = 20;
-            this.btnActivityLogs.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnActivityLogs.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnActivityLogs.Location = new System.Drawing.Point(0, 521);
-            this.btnActivityLogs.Margin = new System.Windows.Forms.Padding(0);
-            this.btnActivityLogs.Name = "btnActivityLogs";
-            this.btnActivityLogs.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnActivityLogs.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnActivityLogs.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnActivityLogs.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnActivityLogs.OnHoverImage")));
-            this.btnActivityLogs.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnActivityLogs.OnPressedColor = System.Drawing.Color.Black;
-            this.btnActivityLogs.Size = new System.Drawing.Size(283, 67);
-            this.btnActivityLogs.TabIndex = 12;
-            this.btnActivityLogs.Text = "Activity Logs";
-            this.btnActivityLogs.TextOffsetX = 10;
-            this.btnActivityLogs.Click += new System.EventHandler(this.btnActivityLogs_Click);
+            this.btnLoginHistory.AnimationHoverSpeed = 0.07F;
+            this.btnLoginHistory.AnimationSpeed = 0.03F;
+            this.btnLoginHistory.BaseColor = System.Drawing.Color.White;
+            this.btnLoginHistory.BorderColor = System.Drawing.Color.Black;
+            this.btnLoginHistory.ButtonType = Guna.UI.WinForms.AdvenceButtonType.RadioButton;
+            this.btnLoginHistory.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnLoginHistory.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnLoginHistory.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnLoginHistory.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnLoginHistory.CheckedImage")));
+            this.btnLoginHistory.CheckedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnLoginHistory.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnLoginHistory.FocusedColor = System.Drawing.Color.Empty;
+            this.btnLoginHistory.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoginHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnLoginHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnLoginHistory.Image")));
+            this.btnLoginHistory.ImageOffsetX = 20;
+            this.btnLoginHistory.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLoginHistory.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnLoginHistory.Location = new System.Drawing.Point(0, 492);
+            this.btnLoginHistory.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLoginHistory.Name = "btnLoginHistory";
+            this.btnLoginHistory.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnLoginHistory.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnLoginHistory.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnLoginHistory.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnLoginHistory.OnHoverImage")));
+            this.btnLoginHistory.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnLoginHistory.OnPressedColor = System.Drawing.Color.Black;
+            this.btnLoginHistory.Size = new System.Drawing.Size(283, 67);
+            this.btnLoginHistory.TabIndex = 12;
+            this.btnLoginHistory.Text = "Login History";
+            this.btnLoginHistory.TextOffsetX = 10;
+            this.btnLoginHistory.Click += new System.EventHandler(this.btnLoginHistory_Click);
             // 
             // btnMaintenanceReport
             // 
@@ -482,7 +552,7 @@
             this.btnMaintenanceReport.ImageOffsetX = 20;
             this.btnMaintenanceReport.ImageSize = new System.Drawing.Size(30, 30);
             this.btnMaintenanceReport.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnMaintenanceReport.Location = new System.Drawing.Point(0, 454);
+            this.btnMaintenanceReport.Location = new System.Drawing.Point(0, 425);
             this.btnMaintenanceReport.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaintenanceReport.Name = "btnMaintenanceReport";
             this.btnMaintenanceReport.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -517,7 +587,7 @@
             this.btnInventoryManagement.ImageOffsetX = 20;
             this.btnInventoryManagement.ImageSize = new System.Drawing.Size(30, 30);
             this.btnInventoryManagement.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnInventoryManagement.Location = new System.Drawing.Point(0, 387);
+            this.btnInventoryManagement.Location = new System.Drawing.Point(0, 358);
             this.btnInventoryManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnInventoryManagement.Name = "btnInventoryManagement";
             this.btnInventoryManagement.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -552,7 +622,7 @@
             this.btnRemoteManagement.ImageOffsetX = 20;
             this.btnRemoteManagement.ImageSize = new System.Drawing.Size(30, 30);
             this.btnRemoteManagement.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnRemoteManagement.Location = new System.Drawing.Point(0, 320);
+            this.btnRemoteManagement.Location = new System.Drawing.Point(0, 291);
             this.btnRemoteManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnRemoteManagement.Name = "btnRemoteManagement";
             this.btnRemoteManagement.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -589,7 +659,7 @@
             this.btnDashboard.ImageSize = new System.Drawing.Size(30, 30);
             this.btnDashboard.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
             this.btnDashboard.LineLeft = 10;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 253);
+            this.btnDashboard.Location = new System.Drawing.Point(0, 224);
             this.btnDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -606,6 +676,10 @@
             // 
             // panelContainer
             // 
+            this.panelContainer.Controls.Add(this.ucAuditTrail1);
+            this.panelContainer.Controls.Add(this.ucArchived1);
+            this.panelContainer.Controls.Add(this.ucLoginHistory1);
+            this.panelContainer.Controls.Add(this.ucMaintenanceReport1);
             this.panelContainer.Controls.Add(this.ucSettings1);
             this.panelContainer.Controls.Add(this.ucBackupRestore1);
             this.panelContainer.Controls.Add(this.ucRemoteManagement1);
@@ -617,6 +691,57 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1417, 848);
             this.panelContainer.TabIndex = 2;
+            // 
+            // ucAuditTrail1
+            // 
+            this.ucAuditTrail1.BackColor = System.Drawing.Color.White;
+            this.ucAuditTrail1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAuditTrail1.Location = new System.Drawing.Point(0, 0);
+            this.ucAuditTrail1.Name = "ucAuditTrail1";
+            this.ucAuditTrail1.Size = new System.Drawing.Size(1417, 848);
+            this.ucAuditTrail1.TabIndex = 9;
+            this.ucAuditTrail1.Visible = false;
+            // 
+            // ucArchived1
+            // 
+            this.ucArchived1.BackColor = System.Drawing.Color.White;
+            this.ucArchived1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucArchived1.Location = new System.Drawing.Point(0, 0);
+            this.ucArchived1.Name = "ucArchived1";
+            this.ucArchived1.Size = new System.Drawing.Size(1417, 848);
+            this.ucArchived1.TabIndex = 8;
+            this.ucArchived1.Visible = false;
+            // 
+            // ucLoginHistory1
+            // 
+            this.ucLoginHistory1.BackColor = System.Drawing.Color.White;
+            this.ucLoginHistory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLoginHistory1.Location = new System.Drawing.Point(0, 0);
+            this.ucLoginHistory1.Name = "ucLoginHistory1";
+            this.ucLoginHistory1.Size = new System.Drawing.Size(1417, 848);
+            this.ucLoginHistory1.TabIndex = 7;
+            this.ucLoginHistory1.Visible = false;
+            // 
+            // ucMaintenanceReport1
+            // 
+            this.ucMaintenanceReport1.BackColor = System.Drawing.Color.White;
+            this.ucMaintenanceReport1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucMaintenanceReport1.Location = new System.Drawing.Point(0, 0);
+            this.ucMaintenanceReport1.Name = "ucMaintenanceReport1";
+            this.ucMaintenanceReport1.Size = new System.Drawing.Size(1417, 848);
+            this.ucMaintenanceReport1.TabIndex = 6;
+            this.ucMaintenanceReport1.Visible = false;
+            // 
+            // ucSettings1
+            // 
+            this.ucSettings1.BackColor = System.Drawing.Color.White;
+            this.ucSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucSettings1.Location = new System.Drawing.Point(0, 0);
+            this.ucSettings1.Name = "ucSettings1";
+            this.ucSettings1.Size = new System.Drawing.Size(1417, 848);
+            this.ucSettings1.TabIndex = 5;
+            this.ucSettings1.Visible = false;
+            this.ucSettings1.Load += new System.EventHandler(this.ucSettings1_Load);
             // 
             // ucBackupRestore1
             // 
@@ -713,15 +838,15 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // ucSettings1
+            // timerIncomingRequest
             // 
-            this.ucSettings1.BackColor = System.Drawing.Color.White;
-            this.ucSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucSettings1.Location = new System.Drawing.Point(0, 0);
-            this.ucSettings1.Name = "ucSettings1";
-            this.ucSettings1.Size = new System.Drawing.Size(1417, 848);
-            this.ucSettings1.TabIndex = 5;
-            this.ucSettings1.Visible = false;
+            this.timerIncomingRequest.Interval = 1000;
+            this.timerIncomingRequest.Tick += new System.EventHandler(this.timerIncomingRequest_Tick);
+            // 
+            // timerCastScreenToClient
+            // 
+            this.timerCastScreenToClient.Interval = 1000;
+            this.timerCastScreenToClient.Tick += new System.EventHandler(this.timerCastScreenToClient_Tick);
             // 
             // frmMain
             // 
@@ -736,9 +861,11 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comfama";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
             this.panelSide.ResumeLayout(false);
             this.panelSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePicture)).EndInit();
@@ -760,7 +887,7 @@
         private Guna.UI.WinForms.GunaAdvenceButton btnArchived;
         private Guna.UI.WinForms.GunaAdvenceButton btnBackupAndRestore;
         private Guna.UI.WinForms.GunaAdvenceButton btnManageUsers;
-        private Guna.UI.WinForms.GunaAdvenceButton btnActivityLogs;
+        private Guna.UI.WinForms.GunaAdvenceButton btnLoginHistory;
         private Guna.UI.WinForms.GunaAdvenceButton btnMaintenanceReport;
         private Guna.UI.WinForms.GunaAdvenceButton btnInventoryManagement;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
@@ -783,6 +910,14 @@
         private Guna.UI.WinForms.GunaAdvenceButton btnMessages;
         private dirUserControl.BackupRestore.ucBackupRestore ucBackupRestore1;
         private dirUserControl.Settings.ucSettings ucSettings1;
+        private System.Windows.Forms.Timer timerIncomingRequest;
+        private Guna.UI.WinForms.GunaPictureBox gunaPictureBox1;
+        private System.Windows.Forms.Timer timerCastScreenToClient;
+        private dirUserControl.MaintenanceReport.ucMaintenanceReport ucMaintenanceReport1;
+        private Guna.UI.WinForms.GunaAdvenceButton btnAuditTrail;
+        private dirUserControl.LoginHistory.ucLoginHistory ucLoginHistory1;
+        private dirUserControl.Archived.ucArchived ucArchived1;
+        private dirUserControl.AuditTrail.ucAuditTrail ucAuditTrail1;
     }
 }
 

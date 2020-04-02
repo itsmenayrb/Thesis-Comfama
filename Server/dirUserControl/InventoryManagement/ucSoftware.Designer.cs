@@ -34,6 +34,8 @@
             this.cbSupplier = new Guna.UI.WinForms.GunaComboBox();
             this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel1 = new Guna.UI.WinForms.GunaLinePanel();
+            this.dtpExpirationDate = new Guna.UI.WinForms.GunaDateTimePicker();
+            this.gunaLabel12 = new Guna.UI.WinForms.GunaLabel();
             this.btnAddLocation = new Guna.UI.WinForms.GunaAdvenceButton();
             this.cbLocation = new Guna.UI.WinForms.GunaComboBox();
             this.gunaLabel11 = new Guna.UI.WinForms.GunaLabel();
@@ -56,17 +58,14 @@
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.txtItem = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLabel12 = new Guna.UI.WinForms.GunaLabel();
-            this.dtpExpirationDate = new Guna.UI.WinForms.GunaDateTimePicker();
             this.gunaLinePanel4 = new Guna.UI.WinForms.GunaLinePanel();
             this.btnClear = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnUpload = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaLabel13 = new Guna.UI.WinForms.GunaLabel();
             this.pbImage = new Guna.UI.WinForms.GunaPictureBox();
+            this.gunaLabel13 = new Guna.UI.WinForms.GunaLabel();
             this.gbStatus = new Guna.UI.WinForms.GunaLinePanel();
-            this.rdbCondemned = new Guna.UI.WinForms.GunaRadioButton();
-            this.rdbDefective = new Guna.UI.WinForms.GunaRadioButton();
-            this.rdbWorking = new Guna.UI.WinForms.GunaRadioButton();
+            this.rdbExpired = new Guna.UI.WinForms.GunaRadioButton();
+            this.rdbSubscribed = new Guna.UI.WinForms.GunaRadioButton();
             this.gunaLabel14 = new Guna.UI.WinForms.GunaLabel();
             this.btnCancel = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnAddItem = new Guna.UI.WinForms.GunaAdvenceButton();
@@ -195,6 +194,41 @@
             this.gunaLinePanel1.Name = "gunaLinePanel1";
             this.gunaLinePanel1.Size = new System.Drawing.Size(705, 418);
             this.gunaLinePanel1.TabIndex = 10;
+            // 
+            // dtpExpirationDate
+            // 
+            this.dtpExpirationDate.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.dtpExpirationDate.BorderColor = System.Drawing.Color.Silver;
+            this.dtpExpirationDate.BorderSize = 1;
+            this.dtpExpirationDate.CustomFormat = null;
+            this.dtpExpirationDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpExpirationDate.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dtpExpirationDate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpExpirationDate.ForeColor = System.Drawing.Color.Black;
+            this.dtpExpirationDate.Location = new System.Drawing.Point(359, 180);
+            this.dtpExpirationDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpExpirationDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpExpirationDate.Name = "dtpExpirationDate";
+            this.dtpExpirationDate.OnHoverBaseColor = System.Drawing.Color.White;
+            this.dtpExpirationDate.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dtpExpirationDate.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dtpExpirationDate.OnPressedColor = System.Drawing.Color.Black;
+            this.dtpExpirationDate.Size = new System.Drawing.Size(322, 31);
+            this.dtpExpirationDate.TabIndex = 29;
+            this.dtpExpirationDate.Text = "Saturday, March 14, 2020";
+            this.dtpExpirationDate.Value = new System.DateTime(2020, 3, 14, 22, 43, 39, 146);
+            this.dtpExpirationDate.ValueChanged += new System.EventHandler(this.dtpExpirationDate_ValueChanged);
+            // 
+            // gunaLabel12
+            // 
+            this.gunaLabel12.AutoSize = true;
+            this.gunaLabel12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel12.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel12.Location = new System.Drawing.Point(356, 160);
+            this.gunaLabel12.Name = "gunaLabel12";
+            this.gunaLabel12.Size = new System.Drawing.Size(120, 17);
+            this.gunaLabel12.TabIndex = 28;
+            this.gunaLabel12.Text = "End of Subscription";
             // 
             // btnAddLocation
             // 
@@ -561,40 +595,6 @@
             this.gunaLabel1.TabIndex = 2;
             this.gunaLabel1.Text = "GENERAL INFORMATION";
             // 
-            // gunaLabel12
-            // 
-            this.gunaLabel12.AutoSize = true;
-            this.gunaLabel12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel12.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel12.Location = new System.Drawing.Point(356, 160);
-            this.gunaLabel12.Name = "gunaLabel12";
-            this.gunaLabel12.Size = new System.Drawing.Size(120, 17);
-            this.gunaLabel12.TabIndex = 28;
-            this.gunaLabel12.Text = "End of Subscription";
-            // 
-            // dtpExpirationDate
-            // 
-            this.dtpExpirationDate.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.dtpExpirationDate.BorderColor = System.Drawing.Color.Silver;
-            this.dtpExpirationDate.BorderSize = 1;
-            this.dtpExpirationDate.CustomFormat = null;
-            this.dtpExpirationDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpExpirationDate.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dtpExpirationDate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpExpirationDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpExpirationDate.Location = new System.Drawing.Point(359, 180);
-            this.dtpExpirationDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpExpirationDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpExpirationDate.Name = "dtpExpirationDate";
-            this.dtpExpirationDate.OnHoverBaseColor = System.Drawing.Color.White;
-            this.dtpExpirationDate.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dtpExpirationDate.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dtpExpirationDate.OnPressedColor = System.Drawing.Color.Black;
-            this.dtpExpirationDate.Size = new System.Drawing.Size(322, 31);
-            this.dtpExpirationDate.TabIndex = 29;
-            this.dtpExpirationDate.Text = "Saturday, March 14, 2020";
-            this.dtpExpirationDate.Value = new System.DateTime(2020, 3, 14, 22, 43, 39, 146);
-            // 
             // gunaLinePanel4
             // 
             this.gunaLinePanel4.Controls.Add(this.btnClear);
@@ -683,17 +683,6 @@
             this.btnUpload.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // gunaLabel13
-            // 
-            this.gunaLabel13.AutoSize = true;
-            this.gunaLabel13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel13.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel13.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel13.Name = "gunaLabel13";
-            this.gunaLabel13.Size = new System.Drawing.Size(48, 16);
-            this.gunaLabel13.TabIndex = 2;
-            this.gunaLabel13.Text = "IMAGE";
-            // 
             // pbImage
             // 
             this.pbImage.BaseColor = System.Drawing.Color.White;
@@ -705,12 +694,23 @@
             this.pbImage.TabIndex = 3;
             this.pbImage.TabStop = false;
             // 
+            // gunaLabel13
+            // 
+            this.gunaLabel13.AutoSize = true;
+            this.gunaLabel13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel13.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel13.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel13.Name = "gunaLabel13";
+            this.gunaLabel13.Size = new System.Drawing.Size(48, 16);
+            this.gunaLabel13.TabIndex = 2;
+            this.gunaLabel13.Text = "IMAGE";
+            // 
             // gbStatus
             // 
-            this.gbStatus.Controls.Add(this.rdbCondemned);
-            this.gbStatus.Controls.Add(this.rdbDefective);
-            this.gbStatus.Controls.Add(this.rdbWorking);
+            this.gbStatus.Controls.Add(this.rdbExpired);
+            this.gbStatus.Controls.Add(this.rdbSubscribed);
             this.gbStatus.Controls.Add(this.gunaLabel14);
+            this.gbStatus.Enabled = false;
             this.gbStatus.LineBottom = 1;
             this.gbStatus.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
             this.gbStatus.LineLeft = 1;
@@ -722,44 +722,31 @@
             this.gbStatus.Size = new System.Drawing.Size(244, 135);
             this.gbStatus.TabIndex = 13;
             // 
-            // rdbCondemned
+            // rdbExpired
             // 
-            this.rdbCondemned.BaseColor = System.Drawing.SystemColors.Control;
-            this.rdbCondemned.CheckedOffColor = System.Drawing.Color.Gray;
-            this.rdbCondemned.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.rdbCondemned.FillColor = System.Drawing.Color.White;
-            this.rdbCondemned.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbCondemned.Location = new System.Drawing.Point(22, 95);
-            this.rdbCondemned.Name = "rdbCondemned";
-            this.rdbCondemned.Size = new System.Drawing.Size(108, 20);
-            this.rdbCondemned.TabIndex = 5;
-            this.rdbCondemned.Text = "Condemned";
+            this.rdbExpired.BaseColor = System.Drawing.SystemColors.Control;
+            this.rdbExpired.CheckedOffColor = System.Drawing.Color.Gray;
+            this.rdbExpired.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.rdbExpired.FillColor = System.Drawing.Color.White;
+            this.rdbExpired.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbExpired.Location = new System.Drawing.Point(22, 69);
+            this.rdbExpired.Name = "rdbExpired";
+            this.rdbExpired.Size = new System.Drawing.Size(74, 20);
+            this.rdbExpired.TabIndex = 4;
+            this.rdbExpired.Text = "Expired";
             // 
-            // rdbDefective
+            // rdbSubscribed
             // 
-            this.rdbDefective.BaseColor = System.Drawing.SystemColors.Control;
-            this.rdbDefective.CheckedOffColor = System.Drawing.Color.Gray;
-            this.rdbDefective.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.rdbDefective.FillColor = System.Drawing.Color.White;
-            this.rdbDefective.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDefective.Location = new System.Drawing.Point(22, 69);
-            this.rdbDefective.Name = "rdbDefective";
-            this.rdbDefective.Size = new System.Drawing.Size(89, 20);
-            this.rdbDefective.TabIndex = 4;
-            this.rdbDefective.Text = "Defective";
-            // 
-            // rdbWorking
-            // 
-            this.rdbWorking.BaseColor = System.Drawing.SystemColors.Control;
-            this.rdbWorking.CheckedOffColor = System.Drawing.Color.Gray;
-            this.rdbWorking.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.rdbWorking.FillColor = System.Drawing.Color.White;
-            this.rdbWorking.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbWorking.Location = new System.Drawing.Point(22, 43);
-            this.rdbWorking.Name = "rdbWorking";
-            this.rdbWorking.Size = new System.Drawing.Size(78, 20);
-            this.rdbWorking.TabIndex = 3;
-            this.rdbWorking.Text = "Working";
+            this.rdbSubscribed.BaseColor = System.Drawing.SystemColors.Control;
+            this.rdbSubscribed.CheckedOffColor = System.Drawing.Color.Gray;
+            this.rdbSubscribed.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.rdbSubscribed.FillColor = System.Drawing.Color.White;
+            this.rdbSubscribed.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbSubscribed.Location = new System.Drawing.Point(22, 43);
+            this.rdbSubscribed.Name = "rdbSubscribed";
+            this.rdbSubscribed.Size = new System.Drawing.Size(96, 20);
+            this.rdbSubscribed.TabIndex = 3;
+            this.rdbSubscribed.Text = "Subscribed";
             // 
             // gunaLabel14
             // 
@@ -906,9 +893,8 @@
         private Guna.UI.WinForms.GunaPictureBox pbImage;
         private Guna.UI.WinForms.GunaLabel gunaLabel13;
         private Guna.UI.WinForms.GunaLinePanel gbStatus;
-        private Guna.UI.WinForms.GunaRadioButton rdbCondemned;
-        private Guna.UI.WinForms.GunaRadioButton rdbDefective;
-        private Guna.UI.WinForms.GunaRadioButton rdbWorking;
+        private Guna.UI.WinForms.GunaRadioButton rdbExpired;
+        private Guna.UI.WinForms.GunaRadioButton rdbSubscribed;
         private Guna.UI.WinForms.GunaLabel gunaLabel14;
         private Guna.UI.WinForms.GunaAdvenceButton btnCancel;
         private Guna.UI.WinForms.GunaAdvenceButton btnAddItem;

@@ -208,7 +208,16 @@ namespace Server.dirUserControl.InventoryManagement
                                                                         capacity, capacityMeasurement, quantity, unit, propertyNumber, location, dateAcquired, status, byteImage))
                                                                     {
                                                                         MessageBox.Show("The " + itemName.ToUpper() + " has been added!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                                        dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemData();
+                                                                        if (dirOtherForms.InventoryManagement.frmAddItems.request == "CameFromInventory")
+                                                                        {
+                                                                            dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemData();
+                                                                            dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemCount();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            dirOtherForms.MaintenanceReport.frmFeedback.mainInstance.loadPeripheralsForReplace(category);
+                                                                        }
+                                                                        new dirClasses.AuditTrail().audit(dirClasses.Session.username, "INSERT ITEM", " ", itemName);
                                                                         ((Form)this.TopLevelControl).Close();
                                                                     }
                                                                     else

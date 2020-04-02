@@ -44,6 +44,8 @@ namespace Server
             tooltip.SetToolTip(pbUsernameHelp, "This refer to the local account or username of this machine. This will use to remotely control this machine.\nYou can change this in the settings anytime.");
             tooltip.SetToolTip(pbPasswordHelp, "This refer to the local account or password of this machine. This will use to remotely control this machine.\nYou can change this in the settings anytime.");
             backgroundWorker1.RunWorkerAsync();
+
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
         }
 
         private void btnFinish_Click(object sender, EventArgs e)

@@ -22,7 +22,11 @@ namespace Server.dirUserControl.BackupRestore
 
         private string _path = string.Empty;
         private string _filename = string.Empty;
+
         private DateTime _time;
+        private string remainingTime = string.Empty;
+        private DateTime rTime;
+        private TimeSpan ts;
 
         public ucBackupRestore()
         {
@@ -36,13 +40,12 @@ namespace Server.dirUserControl.BackupRestore
         {
             displayAppliedSettings();
             loadBackupRestoreLogs();
-
-            string remainingTime = _time.ToLongTimeString();
-            DateTime rTime = DateTime.Parse(remainingTime);
-            TimeSpan ts = rTime.Subtract(DateTime.Now);
+            loadBackupRestoreCount();
 
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(panelTop, Color.Black, 10, 10, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(this, Color.Black, 10, 10, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
+
+            timerAutoBackupRemaining.Start();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -268,6 +271,7 @@ namespace Server.dirUserControl.BackupRestore
                 toastNotification.Show();
                 dirClasses.Configuration.PlayNotificationSound("garden");
                 loadBackupRestoreLogs();
+                loadBackupRestoreCount();
                 Process.Start("explorer.exe", "/select, " + _path + @"\" + filename);
             }
             else
@@ -299,8 +303,8 @@ namespace Server.dirUserControl.BackupRestore
                             DialogResult s = MessageBox.Show("Database has been restored successfull!\n\nPress OK to restart the application.", "Backup and Restore", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (s == DialogResult.OK)
                             {
-                                ((Form)this.TopLevelControl).Close();
-                                new frmLogin().ShowDialog();
+                                Application.Restart();
+                                Environment.Exit(0);
                             }
                         }
                         else
@@ -395,9 +399,10 @@ namespace Server.dirUserControl.BackupRestore
 
         private void timerAutoBackupRemaining_Tick(object sender, EventArgs e)
         {
-            string remainingTime = _time.ToLongTimeString();
-            DateTime rTime = DateTime.Parse(remainingTime);
-            TimeSpan ts = rTime.Subtract(DateTime.Now);
+            remainingTime = _time.ToLongTimeString();
+            rTime = DateTime.Parse(remainingTime);
+            ts = rTime.Subtract(DateTime.Now);
+
             lblRemainingTime.Text = ts.ToString("h' hrs 'm' mins 's' secs remaining to perform automatic backup'");
 
             if (Math.Abs(ts.TotalSeconds) < .5)
@@ -410,6 +415,42 @@ namespace Server.dirUserControl.BackupRestore
                 dirClasses.Configuration.PlayNotificationSound("garden");
                 loadBackupRestoreLogs();
                 Process.Start("explorer.exe", "/select, " + _path + @"\" + filename);
+            }
+
+            if (_time < DateTime.Now)
+            {
+                
+            }
+        }
+
+        public void loadBackupRestoreCount()
+        {
+            try
+            {
+                this.query = "SELECT " +
+                                "(SELECT COUNT(*) FROM BackupRestoreLogs WHERE action=@backup) as backupCount, " +
+                                "(SELECT COUNT(*) FROM BackupRestoreLogs WHERE action=@restore) as restoreCount";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@backup", 1);
+                        cmd.Parameters.AddWithValue("@restore", 0);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lblBackupCount.Text = reader["backupCount"].ToString();
+                            lblRestoreCount.Text = reader["restoreCount"].ToString();
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading backup-restore count: " + ex.Message, "Backup and Restore");
             }
         }
     }

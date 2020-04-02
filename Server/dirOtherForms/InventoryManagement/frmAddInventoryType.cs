@@ -40,6 +40,7 @@ namespace Server.dirOtherForms.InventoryManagement
                         if (request == "view")
                         {
                             dirUserControl.InventoryManagement.ucInventoryTypes.mainInstance.loadInventoryTypeData();
+                            dirUserControl.InventoryManagement.ucInventoryTypes.mainInstance.loadInventoryTypeCount();
                         }
                         else
                         {

@@ -220,7 +220,7 @@ namespace Server.dirClasses
             }
         }
 
-        public void logoutLastUserLogin(int id)
+        public void logoutLastUserLogin(int id, string application, string remarks)
         {
             DateTime logout = DateTime.Now;
             TimeSpan timeDiff = DateTime.Parse(logout.ToString("HH:mm:ss")).Subtract(DateTime.Parse(timein.ToString("HH:mm:ss")));
@@ -231,7 +231,7 @@ namespace Server.dirClasses
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
-                    this.query = "UPDATE LoginHistory SET endTime=@endTime, duration=@duration, remarks=@remarks WHERE id=@id";
+                    this.query = "UPDATE LoginHistory SET endTime=@endTime, duration=@duration, appsUsed=@appsUsed, remarks=@remarks WHERE id=@id";
 
                     using (SqlCommand cmd1 = new SqlCommand(this.query, conn))
                     {
@@ -239,7 +239,8 @@ namespace Server.dirClasses
                         cmd1.Parameters.AddWithValue("@endTime", logout.ToString("HH:mm:ss"));
                         cmd1.Parameters.AddWithValue("@duration", duration);
                         cmd1.Parameters.AddWithValue("@id", id);
-                        cmd1.Parameters.AddWithValue("@remarks", "Normal");
+                        cmd1.Parameters.AddWithValue("@appsUsed", application);
+                        cmd1.Parameters.AddWithValue("@remarks", remarks);
                         cmd1.ExecuteNonQuery();
                     }
                     conn.Close();

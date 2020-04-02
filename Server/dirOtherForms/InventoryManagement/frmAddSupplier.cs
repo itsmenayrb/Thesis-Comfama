@@ -97,7 +97,17 @@ namespace Server.dirOtherForms.InventoryManagement
                                     if (addSupplier.addSupplier(_supplierCode, _supplierID, _businessName, _businessType, _businessAddress, _businessContactNumber, _contactPerson, _contactNumber))
                                     {
                                         MessageBox.Show(_businessName.ToUpper() + " has been added!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        dirUserControl.InventoryManagement.ucInventorySupplierList.mainInstance.loadData();
+                                        if (request == "view")
+                                        {
+                                            dirUserControl.InventoryManagement.ucInventorySupplierList.mainInstance.loadData();
+                                            dirUserControl.InventoryManagement.ucInventorySupplierList.mainInstance.loadInventorySupplierCount();
+                                        }
+                                        else
+                                        {
+                                            dirUserControl.InventoryManagement.ucHardware.mainInstance.loadSupplierData();
+                                            dirUserControl.InventoryManagement.ucSoftware.mainInstance.loadSupplierData();
+                                        }
+                                        
                                         this.Close();
                                     }
                                     else

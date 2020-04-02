@@ -37,26 +37,31 @@
             this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
             this.btnAddCategory = new Guna.UI.WinForms.GunaAdvenceButton();
             this.dgvInventoryCategories = new Zuby.ADGV.AdvancedDataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.inventoryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
+            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.inventoryCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.inventoryCategoriesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryCategoriesTableAdapter();
             this.inventoryTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryTypesTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTotalCategoryCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel1.SuspendLayout();
             this.gunaLinePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryCategoriesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaLinePanel1
             // 
+            this.gunaLinePanel1.Controls.Add(this.pictureBox1);
+            this.gunaLinePanel1.Controls.Add(this.lblTotalCategoryCount);
             this.gunaLinePanel1.Controls.Add(this.gunaLabel3);
             this.gunaLinePanel1.LineBottom = 1;
             this.gunaLinePanel1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
@@ -178,40 +183,6 @@
             this.dgvInventoryCategories.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvInventoryCategory_FilterStringChanged);
             this.dgvInventoryCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryCategories_CellClick);
             // 
-            // inventoryTypesBindingSource
-            // 
-            this.inventoryTypesBindingSource.DataMember = "InventoryTypes";
-            this.inventoryTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
-            // 
-            // dbThesisComfamaDataSet
-            // 
-            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
-            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // inventoryCategoriesBindingSource
-            // 
-            this.inventoryCategoriesBindingSource.DataMember = "InventoryCategories";
-            this.inventoryCategoriesBindingSource.DataSource = this.dbThesisComfamaDataSet;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(156, 16);
-            this.gunaLabel1.TabIndex = 2;
-            this.gunaLabel1.Text = "INVENTORY CATEGORY";
-            // 
-            // inventoryCategoriesTableAdapter
-            // 
-            this.inventoryCategoriesTableAdapter.ClearBeforeFill = true;
-            // 
-            // inventoryTypesTableAdapter
-            // 
-            this.inventoryTypesTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -245,6 +216,16 @@
             this.typeDataGridViewTextBoxColumn.ValueMember = "id";
             this.typeDataGridViewTextBoxColumn.Width = 150;
             // 
+            // inventoryTypesBindingSource
+            // 
+            this.inventoryTypesBindingSource.DataMember = "InventoryTypes";
+            this.inventoryTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
+            // 
+            // dbThesisComfamaDataSet
+            // 
+            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
+            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // action
             // 
             this.action.HeaderText = "ACTION";
@@ -254,6 +235,52 @@
             this.action.Text = "UPDATE";
             this.action.UseColumnTextForButtonValue = true;
             this.action.Width = 80;
+            // 
+            // inventoryCategoriesBindingSource
+            // 
+            this.inventoryCategoriesBindingSource.DataMember = "InventoryCategories";
+            this.inventoryCategoriesBindingSource.DataSource = this.dbThesisComfamaDataSet;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(156, 16);
+            this.gunaLabel1.TabIndex = 2;
+            this.gunaLabel1.Text = "INVENTORY CATEGORY";
+            // 
+            // inventoryCategoriesTableAdapter
+            // 
+            this.inventoryCategoriesTableAdapter.ClearBeforeFill = true;
+            // 
+            // inventoryTypesTableAdapter
+            // 
+            this.inventoryTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Server.Resource1.google_analytics_logo_50px;
+            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblTotalCategoryCount
+            // 
+            this.lblTotalCategoryCount.AutoSize = true;
+            this.lblTotalCategoryCount.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCategoryCount.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalCategoryCount.Location = new System.Drawing.Point(9, 48);
+            this.lblTotalCategoryCount.Name = "lblTotalCategoryCount";
+            this.lblTotalCategoryCount.Size = new System.Drawing.Size(68, 78);
+            this.lblTotalCategoryCount.TabIndex = 11;
+            this.lblTotalCategoryCount.Text = "0";
+            this.lblTotalCategoryCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ucInventoryCategories
             // 
@@ -273,6 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.inventoryTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryCategoriesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,5 +322,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn action;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI.WinForms.GunaLabel lblTotalCategoryCount;
     }
 }

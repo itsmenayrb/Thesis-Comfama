@@ -26,7 +26,7 @@ namespace Server.dirUserControl.UserManagement
 
         private void ucEmployees_Load(object sender, EventArgs e)
         {
-            loadData();
+            loadAllData();
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -75,6 +75,14 @@ namespace Server.dirUserControl.UserManagement
 
         }
 
+        public void loadAllData()
+        {
+            loadData();
+            loadEmployeesPerDepartment(5);
+            loadEmployeesPerPosition(5);
+            loadEmployeeCount();
+        }
+
         public void loadData()
         {
             this.departmentsTableAdapter.Fill(this.dbThesisComfamaDataSet.Departments);
@@ -102,13 +110,121 @@ namespace Server.dirUserControl.UserManagement
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error on loading supplier: " + ex.Message, "Add Item");
+                MessageBox.Show("Error on loading employees: " + ex.Message, "User Management");
             }
         }
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        public void loadEmployeesPerDepartment(int num)
+        {
+            try
+            {
+                this.query = "SELECT TOP " + num + " b.department as department, COUNT(a.department) as departmentCount " +
+                             "FROM Employees a " +
+                             "INNER JOIN Departments b ON a.department = b.id " +
+                             "GROUP BY b.department, a.department " +
+                             "ORDER BY departmentCount DESC";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            //Fill the DataTable with records from Table.
+                            DataTable dt = new DataTable();
+                            adapter.SelectCommand = cmd;
+                            adapter.Fill(dt);
+                            dgvEmployeePerDepartment.DataSource = dt;
+                            dgvEmployeePerDepartment.AutoGenerateColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading employees per department: " + ex.Message, "User Management");
+            }
+        }
+
+        public void loadEmployeesPerPosition(int num)
+        {
+            try
+            {
+                this.query = "SELECT TOP " + num + " b.position as position, COUNT(a.position) as positionCount " +
+                             "FROM Employees a " +
+                             "INNER JOIN Positions b ON a.position = b.id " +
+                             "GROUP BY b.position, a.position " +
+                             "ORDER BY positionCount DESC";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            //Fill the DataTable with records from Table.
+                            DataTable dt = new DataTable();
+                            adapter.SelectCommand = cmd;
+                            adapter.Fill(dt);
+                            dgvEmployeesPerPosition.DataSource = dt;
+                            dgvEmployeesPerPosition.AutoGenerateColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading employees per position: " + ex.Message, "User Management");
+            }
+        }
+
+        private void cbEmployeePerDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int numberToDisplay = Convert.ToInt32(cbEmployeePerDepartment.Text);
+            loadEmployeesPerDepartment(numberToDisplay);
+        }
+
+        private void cbEmployeePerPosition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int numberToDisplay = Convert.ToInt32(cbEmployeePerPosition.Text);
+            loadEmployeesPerPosition(numberToDisplay);
+        }
+
+        public void loadEmployeeCount()
+        {
+            try
+            {
+                this.query = "SELECT " +
+                                "(SELECT COUNT(*) FROM Employees) as employeeCount, " +
+                                "(SELECT COUNT(*) FROM Departments) as departmentCount, " +
+                                "(SELECT COUNT(*) FROM Positions) as positionCount";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lblEmployeeCount.Text = reader["employeeCount"].ToString();
+                            lblDepartmentCount.Text = reader["departmentCount"].ToString();
+                            lblPositionCount.Text = reader["positionCount"].ToString();
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading employee count: " + ex.Message, "User Management");
+            }
         }
     }
 }

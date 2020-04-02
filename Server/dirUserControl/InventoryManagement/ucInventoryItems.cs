@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.Reporting.WinForms;
 
 namespace Server.dirUserControl.InventoryManagement
 {
@@ -15,6 +16,10 @@ namespace Server.dirUserControl.InventoryManagement
         public static ucInventoryItems mainInstance = null;
         public string connectionString = string.Empty;
         public string query = string.Empty;
+
+        ReportDataSource rs = new ReportDataSource();
+
+        private int numberToDisplay = 0;
 
         public ucInventoryItems()
         {
@@ -26,17 +31,34 @@ namespace Server.dirUserControl.InventoryManagement
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            dirOtherForms.InventoryManagement.frmAddItems.request = "CameFromInventory";
             new dirOtherForms.InventoryManagement.frmAddItems().ShowDialog();
         }
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
-            
+            //BindingSource bs = (BindingSource)dgvInventoryItems.DataSource;
+            //DataTable d = (DataTable)bs.DataSource;
+            //dirReports.InventoryManagement.frmGenerateReport.dt = d;
+            //dirReports.InventoryManagement.frmGenerateReport gr = new dirReports.InventoryManagement.frmGenerateReport();
+            //gr.ShowDialog();
         }
 
         private void ucInventoryItems_Load(object sender, EventArgs e)
         {
             loadItemData();
+            loadItemCount();
+            loadAllReportCount();
+        }
+
+        public void loadAllReportCount()
+        {
+            cbMostReportedItem.SelectedIndex = 0;
+            cbNumberOfItemsPerDepartment.SelectedIndex = 0;
+
+            int a = 5;
+            loadMostReportedItem(a);
+            loadItemsPerDepartment(a);
         }
 
         public void loadItemData()
@@ -49,6 +71,7 @@ namespace Server.dirUserControl.InventoryManagement
                              "WHERE InventoryItems.academicYear=@academicYear";
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    conn.Open();
                     using (SqlCommand cmd = new SqlCommand(this.query, conn))
                     {
                         cmd.Parameters.Clear();
@@ -62,14 +85,31 @@ namespace Server.dirUserControl.InventoryManagement
                             adapter.Fill(dt);
                             dgvInventoryItems.DataSource = dt;
                             dgvInventoryItems.AutoGenerateColumns = false;
+
+
+                            if (dgvInventoryItems.Columns.Contains("action") && dgvInventoryItems.Columns["action"].Visible)
+                            {
+
+                            }
+                            else
+                            {
+                                DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+                                {
+                                    button.Name = "action";
+                                    button.HeaderText = "ACTION";
+                                    button.Text = "VIEW ITEM";
+                                    button.UseColumnTextForButtonValue = true;
+                                    this.dgvInventoryItems.Columns.Add(button);
+                                }
+                            }
                         }
                     }
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error on loading supplier: " + ex.Message, "Add Item");
+                MessageBox.Show("Error on loading items: " + ex.Message, "Inventory Management");
             }
         }
 
@@ -106,6 +146,150 @@ namespace Server.dirUserControl.InventoryManagement
                 int inventoryItemID = Convert.ToInt32(dgvInventoryItems.Rows[dgvInventoryItems.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
                 dirOtherForms.InventoryManagement.frmViewItem.inventoryItemID = inventoryItemID;
                 new dirOtherForms.InventoryManagement.frmViewItem().ShowDialog();
+            }
+        }
+
+        public void loadItemCount()
+        {
+            try
+            {
+                this.query = "SELECT " +
+                                "(SELECT COUNT(*) FROM InventoryItems WHERE status=@working OR status=@subscribed) as workingCount, " +
+                                "(SELECT COUNT(*) FROM InventoryItems WHERE status=@defective OR status=@expired) as defectiveCount, " +
+                                "(SELECT COUNT(*) FROM InventoryItems WHERE status=@condemned) as condemnedCount, " +
+                                "(SELECT COUNT(*) FROM InventoryItems) as totalItemCount";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@working", "Working");
+                        cmd.Parameters.AddWithValue("@defective", "Defective");
+                        cmd.Parameters.AddWithValue("@condemned", "Condemned");
+                        cmd.Parameters.AddWithValue("@subscribed", "Subscribed");
+                        cmd.Parameters.AddWithValue("@expired", "Expired");
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lblTotalItemsCount.Text = reader["totalItemCount"].ToString();
+                            lblWorkingItemsCount.Text = reader["workingCount"].ToString();
+                            lblDefectiveItemsCount.Text = reader["defectiveCount"].ToString();
+                            lblCondemnedItemsCount.Text = reader["condemnedCount"].ToString();
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading supplier: " + ex.Message, "Add Item");
+            }
+        }
+
+        public void loadItemsPerDepartment(int num)
+        {
+            try
+            {
+                this.query = "SELECT TOP " + num + " b.department as Department, COUNT(a.item) as NumberOfItems " +
+                             "FROM InventoryItems a " +
+                             "INNER JOIN Departments b ON a.location = b.id " +
+                             "WHERE a.academicYear=@academicYear " +
+                             "GROUP BY a.location, b.department " +
+                             "ORDER BY NumberOfItems DESC";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@academicYear", dirClasses.Session.academicYearID);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            //Fill the DataTable with records from Table.
+                            DataTable dt = new DataTable();
+                            adapter.SelectCommand = cmd;
+                            adapter.Fill(dt);
+                            dgvItemsPerDepartment.DataSource = dt;
+                            dgvItemsPerDepartment.AutoGenerateColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading items per department: " + ex.Message, "Inventory Management");
+            }
+        }
+
+        public void loadMostReportedItem(int num)
+        {
+            try
+            {
+                this.query = "SELECT TOP " + num + " item, reportCount " +
+                             "FROM InventoryItems " +
+                             "WHERE reportCount is not null AND academicYear=@academicYear " +
+                             "ORDER BY reportCount DESC";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@academicYear", dirClasses.Session.academicYearID);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            //Fill the DataTable with records from Table.
+                            DataTable dt = new DataTable();
+                            adapter.SelectCommand = cmd;
+                            adapter.Fill(dt);
+                            dgvMostReportedItem.DataSource = dt;
+                            dgvMostReportedItem.AutoGenerateColumns = false;
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading most reported item: " + ex.Message, "Inventory Management");
+            }
+        }
+
+        private void cbNumberOfItemsPerDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numberToDisplay = Convert.ToInt32(cbNumberOfItemsPerDepartment.Text);
+            loadItemsPerDepartment(numberToDisplay);
+        }
+
+        private void cbMostReportedItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numberToDisplay = Convert.ToInt32(cbMostReportedItem.Text);
+            loadMostReportedItem(numberToDisplay);
+        }
+
+        private void dgvInventoryItems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvInventoryItems.Rows)
+            {
+                string status = row.Cells["status"].Value.ToString();
+
+                if (status == "Working" || status == "Subscribed")
+                {
+                    row.Cells["status"].Style.BackColor = Color.FromArgb(92, 184, 92);
+                    row.Cells["status"].Style.ForeColor = Color.White;
+                }
+                else if (status == "Defective" || status == "Expired")
+                {
+                    row.Cells["status"].Style.BackColor = Color.FromArgb(240, 173, 78);
+                    row.Cells["status"].Style.ForeColor = Color.White;
+                }
+                else if (status == "Condemned")
+                {
+                    row.Cells["status"].Style.BackColor = Color.FromArgb(217, 83, 79);
+                    row.Cells["status"].Style.ForeColor = Color.White;
+                }
             }
         }
     }

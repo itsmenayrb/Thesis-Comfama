@@ -16,6 +16,8 @@ namespace Server.dirOtherForms.InventoryManagement
         public string connectionString = string.Empty;
         public string query = string.Empty;
 
+        public static string request { get; set; }
+
         public frmAddItems()
         {
             mainInstance = this;

@@ -58,6 +58,7 @@ namespace Server.dirOtherForms.InventoryManagement
                             if (request == "view")
                             {
                                 dirUserControl.InventoryManagement.ucInventoryCategories.mainInstance.loadData();
+                                dirUserControl.InventoryManagement.ucInventoryCategories.mainInstance.loadInventoryCategoryCount();
                             }
                             else
                             {

@@ -20,6 +20,16 @@ namespace Server.dirUserControl.Dashboard
         {
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(panelTop, Color.Black, 10, 10, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(this, Color.Black, 10, 10, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
+
+            lblDay.Text = DateTime.Now.DayOfWeek.ToString().ToUpper();
+            lblDateTime.Text = DateTime.Now.ToString().ToUpper();
+        }
+
+        private void timerDateTime_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToString().ToUpper();
+            new dirClasses.Configuration().displayCurrentAcademicYear();
+            lblAcademicYear.Text = "A.Y " + dirClasses.Session.semester + " " + dirClasses.Session.academicYear;
         }
     }
 }

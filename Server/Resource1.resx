@@ -190,4 +190,43 @@
   <data name="search_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\search_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sidebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\sidebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuya_logo_1_2_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\kuya logo 1.2_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chevron_left_50px_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\chevron_left_50px_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chevron_right_50px_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\chevron_right_50px_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pause_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pause_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resume_button_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\resume_button_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stop_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\stop_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="box_important_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\box_important_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\cancel_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="google_analytics_logo_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\google_analytics_logo_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ok_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tick_box_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\tick_box_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="time_machine_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\time_machine_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

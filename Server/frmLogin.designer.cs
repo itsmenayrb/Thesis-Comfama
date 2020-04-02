@@ -220,6 +220,7 @@
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 30);
             this.gunaControlBox1.TabIndex = 22;
+            this.gunaControlBox1.Click += new System.EventHandler(this.gunaControlBox1_Click);
             // 
             // panelContainer
             // 

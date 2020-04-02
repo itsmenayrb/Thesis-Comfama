@@ -44,15 +44,20 @@
             this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.inventoryTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryTypesTableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTotalTypesCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel1.SuspendLayout();
             this.gunaLinePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaLinePanel1
             // 
+            this.gunaLinePanel1.Controls.Add(this.pictureBox1);
+            this.gunaLinePanel1.Controls.Add(this.lblTotalTypesCount);
             this.gunaLinePanel1.Controls.Add(this.gunaLabel3);
             this.gunaLinePanel1.LineBottom = 1;
             this.gunaLinePanel1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
@@ -179,6 +184,7 @@
             this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 22;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.idDataGridViewTextBoxColumn.Visible = false;
             this.idDataGridViewTextBoxColumn.Width = 45;
@@ -227,6 +233,28 @@
             // 
             this.inventoryTypesTableAdapter.ClearBeforeFill = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Server.Resource1.google_analytics_logo_50px;
+            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblTotalTypesCount
+            // 
+            this.lblTotalTypesCount.AutoSize = true;
+            this.lblTotalTypesCount.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTypesCount.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalTypesCount.Location = new System.Drawing.Point(9, 48);
+            this.lblTotalTypesCount.Name = "lblTotalTypesCount";
+            this.lblTotalTypesCount.Size = new System.Drawing.Size(68, 78);
+            this.lblTotalTypesCount.TabIndex = 9;
+            this.lblTotalTypesCount.Text = "0";
+            this.lblTotalTypesCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ucInventoryTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,5 +291,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn action;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI.WinForms.GunaLabel lblTotalTypesCount;
     }
 }

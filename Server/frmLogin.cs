@@ -277,5 +277,14 @@ namespace Server
         {
             
         }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Exit application?", "Comfama", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == System.Windows.Forms.DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+        }
     }
 }

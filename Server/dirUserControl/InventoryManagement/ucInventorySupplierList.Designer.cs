@@ -29,23 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaLinePanel1 = new Guna.UI.WinForms.GunaLinePanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTotalBusinessTypeCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
             this.btnGenerateReport = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnAddSupplier = new Guna.UI.WinForms.GunaAdvenceButton();
             this.dgvInventorySupplier = new Zuby.ADGV.AdvancedDataGridView();
-            this.inventoryBusinessTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
-            this.inventorySuppliersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.inventorySuppliersTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventorySuppliersTableAdapter();
-            this.inventoryBusinessTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryBusinessTypesTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.businessTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.inventoryBusinessTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
             this.businessNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +52,12 @@
             this.contactPersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.inventorySuppliersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.inventorySuppliersTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventorySuppliersTableAdapter();
+            this.inventoryBusinessTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryBusinessTypesTableAdapter();
             this.gunaLinePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gunaLinePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventorySupplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBusinessTypesBindingSource)).BeginInit();
@@ -64,6 +67,8 @@
             // 
             // gunaLinePanel1
             // 
+            this.gunaLinePanel1.Controls.Add(this.pictureBox1);
+            this.gunaLinePanel1.Controls.Add(this.lblTotalBusinessTypeCount);
             this.gunaLinePanel1.Controls.Add(this.gunaLabel3);
             this.gunaLinePanel1.LineBottom = 1;
             this.gunaLinePanel1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
@@ -75,6 +80,28 @@
             this.gunaLinePanel1.Name = "gunaLinePanel1";
             this.gunaLinePanel1.Size = new System.Drawing.Size(258, 158);
             this.gunaLinePanel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Server.Resource1.google_analytics_logo_50px;
+            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblTotalBusinessTypeCount
+            // 
+            this.lblTotalBusinessTypeCount.AutoSize = true;
+            this.lblTotalBusinessTypeCount.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBusinessTypeCount.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalBusinessTypeCount.Location = new System.Drawing.Point(9, 48);
+            this.lblTotalBusinessTypeCount.Name = "lblTotalBusinessTypeCount";
+            this.lblTotalBusinessTypeCount.Size = new System.Drawing.Size(68, 78);
+            this.lblTotalBusinessTypeCount.TabIndex = 13;
+            this.lblTotalBusinessTypeCount.Text = "0";
+            this.lblTotalBusinessTypeCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gunaLabel3
             // 
@@ -180,14 +207,14 @@
             this.dgvInventorySupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvInventorySupplier.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.dgvInventorySupplier.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventorySupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventorySupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInventorySupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventorySupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -201,65 +228,31 @@
             this.contactNumberDataGridViewTextBoxColumn,
             this.action});
             this.dgvInventorySupplier.DataSource = this.inventorySuppliersBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventorySupplier.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventorySupplier.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvInventorySupplier.FilterAndSortEnabled = true;
             this.dgvInventorySupplier.Location = new System.Drawing.Point(22, 57);
             this.dgvInventorySupplier.MultiSelect = false;
             this.dgvInventorySupplier.Name = "dgvInventorySupplier";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventorySupplier.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventorySupplier.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvInventorySupplier.Size = new System.Drawing.Size(1057, 517);
             this.dgvInventorySupplier.TabIndex = 5;
             this.dgvInventorySupplier.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.dgvInventorySupplier_SortStringChanged);
             this.dgvInventorySupplier.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvInventorySupplier_FilterStringChanged);
             this.dgvInventorySupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventorySupplier_CellClick);
-            // 
-            // inventoryBusinessTypesBindingSource
-            // 
-            this.inventoryBusinessTypesBindingSource.DataMember = "InventoryBusinessTypes";
-            this.inventoryBusinessTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
-            // 
-            // dbThesisComfamaDataSet
-            // 
-            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
-            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // inventorySuppliersBindingSource
-            // 
-            this.inventorySuppliersBindingSource.DataMember = "InventorySuppliers";
-            this.inventorySuppliersBindingSource.DataSource = this.dbThesisComfamaDataSet;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(62, 16);
-            this.gunaLabel1.TabIndex = 2;
-            this.gunaLabel1.Text = "SUPPLIER";
-            // 
-            // inventorySuppliersTableAdapter
-            // 
-            this.inventorySuppliersTableAdapter.ClearBeforeFill = true;
-            // 
-            // inventoryBusinessTypesTableAdapter
-            // 
-            this.inventoryBusinessTypesTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -283,7 +276,17 @@
             this.businessTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.businessTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.businessTypeDataGridViewTextBoxColumn.ValueMember = "id";
-            this.businessTypeDataGridViewTextBoxColumn.Width = 114;
+            this.businessTypeDataGridViewTextBoxColumn.Width = 105;
+            // 
+            // inventoryBusinessTypesBindingSource
+            // 
+            this.inventoryBusinessTypesBindingSource.DataMember = "InventoryBusinessTypes";
+            this.inventoryBusinessTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
+            // 
+            // dbThesisComfamaDataSet
+            // 
+            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
+            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // businessNameDataGridViewTextBoxColumn
             // 
@@ -359,6 +362,30 @@
             this.action.UseColumnTextForButtonValue = true;
             this.action.Width = 80;
             // 
+            // inventorySuppliersBindingSource
+            // 
+            this.inventorySuppliersBindingSource.DataMember = "InventorySuppliers";
+            this.inventorySuppliersBindingSource.DataSource = this.dbThesisComfamaDataSet;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(62, 16);
+            this.gunaLabel1.TabIndex = 2;
+            this.gunaLabel1.Text = "SUPPLIER";
+            // 
+            // inventorySuppliersTableAdapter
+            // 
+            this.inventorySuppliersTableAdapter.ClearBeforeFill = true;
+            // 
+            // inventoryBusinessTypesTableAdapter
+            // 
+            this.inventoryBusinessTypesTableAdapter.ClearBeforeFill = true;
+            // 
             // ucInventorySupplierList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +398,7 @@
             this.Load += new System.EventHandler(this.ucInventorySupplierList_Load);
             this.gunaLinePanel1.ResumeLayout(false);
             this.gunaLinePanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gunaLinePanel2.ResumeLayout(false);
             this.gunaLinePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventorySupplier)).EndInit();
@@ -405,5 +433,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPersonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn action;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI.WinForms.GunaLabel lblTotalBusinessTypeCount;
     }
 }

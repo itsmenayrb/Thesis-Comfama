@@ -25,6 +25,7 @@ namespace Server
             {
                 Application.Run(new frmSetup());
             }
+            //Application.Run(new frmMessages());
         }
     }
 }

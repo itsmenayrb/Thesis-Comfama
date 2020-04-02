@@ -33,26 +33,31 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaLinePanel1 = new Guna.UI.WinForms.GunaLinePanel();
+            this.lblTotalSupplierCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
             this.btnAddBusinessType = new Guna.UI.WinForms.GunaAdvenceButton();
             this.dgvInventoryBusinessType = new Zuby.ADGV.AdvancedDataGridView();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
-            this.inventoryBusinessTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.inventoryBusinessTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryBusinessTypesTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.businessTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.inventoryBusinessTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbThesisComfamaDataSet = new Server.dbThesisComfamaDataSet();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.inventoryBusinessTypesTableAdapter = new Server.dbThesisComfamaDataSetTableAdapters.InventoryBusinessTypesTableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gunaLinePanel1.SuspendLayout();
             this.gunaLinePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryBusinessType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBusinessTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaLinePanel1
             // 
+            this.gunaLinePanel1.Controls.Add(this.pictureBox1);
+            this.gunaLinePanel1.Controls.Add(this.lblTotalSupplierCount);
             this.gunaLinePanel1.Controls.Add(this.gunaLabel3);
             this.gunaLinePanel1.LineBottom = 1;
             this.gunaLinePanel1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
@@ -64,6 +69,18 @@
             this.gunaLinePanel1.Name = "gunaLinePanel1";
             this.gunaLinePanel1.Size = new System.Drawing.Size(258, 158);
             this.gunaLinePanel1.TabIndex = 8;
+            // 
+            // lblTotalSupplierCount
+            // 
+            this.lblTotalSupplierCount.AutoSize = true;
+            this.lblTotalSupplierCount.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalSupplierCount.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalSupplierCount.Location = new System.Drawing.Point(9, 48);
+            this.lblTotalSupplierCount.Name = "lblTotalSupplierCount";
+            this.lblTotalSupplierCount.Size = new System.Drawing.Size(68, 78);
+            this.lblTotalSupplierCount.TabIndex = 15;
+            this.lblTotalSupplierCount.Text = "0";
+            this.lblTotalSupplierCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gunaLabel3
             // 
@@ -174,31 +191,6 @@
             this.dgvInventoryBusinessType.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgvInventoryBusinessType_FilterStringChanged);
             this.dgvInventoryBusinessType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryBusinessType_CellClick);
             // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(98, 16);
-            this.gunaLabel1.TabIndex = 2;
-            this.gunaLabel1.Text = "BUSINESS TYPE";
-            // 
-            // dbThesisComfamaDataSet
-            // 
-            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
-            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // inventoryBusinessTypesBindingSource
-            // 
-            this.inventoryBusinessTypesBindingSource.DataMember = "InventoryBusinessTypes";
-            this.inventoryBusinessTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
-            // 
-            // inventoryBusinessTypesTableAdapter
-            // 
-            this.inventoryBusinessTypesTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -229,6 +221,41 @@
             this.action.UseColumnTextForButtonValue = true;
             this.action.Width = 80;
             // 
+            // inventoryBusinessTypesBindingSource
+            // 
+            this.inventoryBusinessTypesBindingSource.DataMember = "InventoryBusinessTypes";
+            this.inventoryBusinessTypesBindingSource.DataSource = this.dbThesisComfamaDataSet;
+            // 
+            // dbThesisComfamaDataSet
+            // 
+            this.dbThesisComfamaDataSet.DataSetName = "dbThesisComfamaDataSet";
+            this.dbThesisComfamaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(98, 16);
+            this.gunaLabel1.TabIndex = 2;
+            this.gunaLabel1.Text = "BUSINESS TYPE";
+            // 
+            // inventoryBusinessTypesTableAdapter
+            // 
+            this.inventoryBusinessTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Server.Resource1.google_analytics_logo_50px;
+            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // ucInventoryBusinessTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,8 +271,9 @@
             this.gunaLinePanel2.ResumeLayout(false);
             this.gunaLinePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryBusinessType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBusinessTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbThesisComfamaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,5 +292,7 @@
         private System.Windows.Forms.BindingSource inventoryBusinessTypesBindingSource;
         private dbThesisComfamaDataSet dbThesisComfamaDataSet;
         private dbThesisComfamaDataSetTableAdapters.InventoryBusinessTypesTableAdapter inventoryBusinessTypesTableAdapter;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI.WinForms.GunaLabel lblTotalSupplierCount;
     }
 }

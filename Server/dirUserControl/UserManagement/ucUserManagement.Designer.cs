@@ -39,23 +39,12 @@
             this.btnManageEmployees = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.panel = new System.Windows.Forms.Panel();
-            this.panelContainer = new System.Windows.Forms.Panel();
-            this.gunaLinePanel4 = new Guna.UI.WinForms.GunaLinePanel();
-            this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLinePanel3 = new Guna.UI.WinForms.GunaLinePanel();
-            this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
-            this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
             this.ucStudents1 = new Server.dirUserControl.UserManagement.ucStudents();
-            this.ucAccounts1 = new Server.dirUserControl.UserManagement.ucAccounts();
             this.ucEmployees1 = new Server.dirUserControl.UserManagement.ucEmployees();
+            this.ucAccounts1 = new Server.dirUserControl.UserManagement.ucAccounts();
             this.panelTop.SuspendLayout();
             this.gunaLinePanel1.SuspendLayout();
             this.panel.SuspendLayout();
-            this.panelContainer.SuspendLayout();
-            this.gunaLinePanel4.SuspendLayout();
-            this.gunaLinePanel3.SuspendLayout();
-            this.gunaLinePanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -258,98 +247,13 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.panelContainer);
-            this.panel.Controls.Add(this.gunaLinePanel4);
-            this.panel.Controls.Add(this.gunaLinePanel3);
+            this.panel.Controls.Add(this.ucAccounts1);
+            this.panel.Controls.Add(this.ucStudents1);
+            this.panel.Controls.Add(this.ucEmployees1);
             this.panel.Location = new System.Drawing.Point(25, 163);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1365, 651);
             this.panel.TabIndex = 5;
-            // 
-            // panelContainer
-            // 
-            this.panelContainer.Controls.Add(this.ucEmployees1);
-            this.panelContainer.Controls.Add(this.ucStudents1);
-            this.panelContainer.Controls.Add(this.ucAccounts1);
-            this.panelContainer.Location = new System.Drawing.Point(264, 0);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1101, 651);
-            this.panelContainer.TabIndex = 9;
-            // 
-            // gunaLinePanel4
-            // 
-            this.gunaLinePanel4.Controls.Add(this.gunaLabel6);
-            this.gunaLinePanel4.LineBottom = 1;
-            this.gunaLinePanel4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.gunaLinePanel4.LineLeft = 1;
-            this.gunaLinePanel4.LineRight = 1;
-            this.gunaLinePanel4.LineStyle = System.Windows.Forms.BorderStyle.None;
-            this.gunaLinePanel4.LineTop = 1;
-            this.gunaLinePanel4.Location = new System.Drawing.Point(0, 328);
-            this.gunaLinePanel4.Name = "gunaLinePanel4";
-            this.gunaLinePanel4.Size = new System.Drawing.Size(258, 158);
-            this.gunaLinePanel4.TabIndex = 8;
-            // 
-            // gunaLabel6
-            // 
-            this.gunaLabel6.AutoSize = true;
-            this.gunaLabel6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel6.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel6.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel6.Name = "gunaLabel6";
-            this.gunaLabel6.Size = new System.Drawing.Size(111, 16);
-            this.gunaLabel6.TabIndex = 2;
-            this.gunaLabel6.Text = "TOTAL STUDENTS";
-            // 
-            // gunaLinePanel3
-            // 
-            this.gunaLinePanel3.Controls.Add(this.gunaLabel5);
-            this.gunaLinePanel3.LineBottom = 1;
-            this.gunaLinePanel3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.gunaLinePanel3.LineLeft = 1;
-            this.gunaLinePanel3.LineRight = 1;
-            this.gunaLinePanel3.LineStyle = System.Windows.Forms.BorderStyle.None;
-            this.gunaLinePanel3.LineTop = 1;
-            this.gunaLinePanel3.Location = new System.Drawing.Point(0, 164);
-            this.gunaLinePanel3.Name = "gunaLinePanel3";
-            this.gunaLinePanel3.Size = new System.Drawing.Size(258, 158);
-            this.gunaLinePanel3.TabIndex = 7;
-            // 
-            // gunaLabel5
-            // 
-            this.gunaLabel5.AutoSize = true;
-            this.gunaLabel5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel5.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel5.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel5.Name = "gunaLabel5";
-            this.gunaLabel5.Size = new System.Drawing.Size(123, 16);
-            this.gunaLabel5.TabIndex = 2;
-            this.gunaLabel5.Text = "TOTAL EMPLOYEES";
-            // 
-            // gunaLinePanel2
-            // 
-            this.gunaLinePanel2.Controls.Add(this.gunaLabel4);
-            this.gunaLinePanel2.LineBottom = 1;
-            this.gunaLinePanel2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.gunaLinePanel2.LineLeft = 1;
-            this.gunaLinePanel2.LineRight = 1;
-            this.gunaLinePanel2.LineStyle = System.Windows.Forms.BorderStyle.None;
-            this.gunaLinePanel2.LineTop = 1;
-            this.gunaLinePanel2.Location = new System.Drawing.Point(25, 163);
-            this.gunaLinePanel2.Name = "gunaLinePanel2";
-            this.gunaLinePanel2.Size = new System.Drawing.Size(258, 158);
-            this.gunaLinePanel2.TabIndex = 6;
-            // 
-            // gunaLabel4
-            // 
-            this.gunaLabel4.AutoSize = true;
-            this.gunaLabel4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel4.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel4.Location = new System.Drawing.Point(19, 18);
-            this.gunaLabel4.Name = "gunaLabel4";
-            this.gunaLabel4.Size = new System.Drawing.Size(173, 16);
-            this.gunaLabel4.TabIndex = 2;
-            this.gunaLabel4.Text = "TOTAL ACTIVE ACCOUNTS";
             // 
             // ucStudents1
             // 
@@ -357,19 +261,9 @@
             this.ucStudents1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucStudents1.Location = new System.Drawing.Point(0, 0);
             this.ucStudents1.Name = "ucStudents1";
-            this.ucStudents1.Size = new System.Drawing.Size(1101, 651);
+            this.ucStudents1.Size = new System.Drawing.Size(1365, 651);
             this.ucStudents1.TabIndex = 1;
             this.ucStudents1.Visible = false;
-            // 
-            // ucAccounts1
-            // 
-            this.ucAccounts1.BackColor = System.Drawing.Color.White;
-            this.ucAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAccounts1.Location = new System.Drawing.Point(0, 0);
-            this.ucAccounts1.Name = "ucAccounts1";
-            this.ucAccounts1.Size = new System.Drawing.Size(1101, 651);
-            this.ucAccounts1.TabIndex = 0;
-            this.ucAccounts1.Visible = false;
             // 
             // ucEmployees1
             // 
@@ -377,15 +271,24 @@
             this.ucEmployees1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucEmployees1.Location = new System.Drawing.Point(0, 0);
             this.ucEmployees1.Name = "ucEmployees1";
-            this.ucEmployees1.Size = new System.Drawing.Size(1101, 651);
-            this.ucEmployees1.TabIndex = 2;
+            this.ucEmployees1.Size = new System.Drawing.Size(1365, 651);
+            this.ucEmployees1.TabIndex = 0;
+            // 
+            // ucAccounts1
+            // 
+            this.ucAccounts1.BackColor = System.Drawing.Color.White;
+            this.ucAccounts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAccounts1.Location = new System.Drawing.Point(0, 0);
+            this.ucAccounts1.Name = "ucAccounts1";
+            this.ucAccounts1.Size = new System.Drawing.Size(1365, 651);
+            this.ucAccounts1.TabIndex = 2;
+            this.ucAccounts1.Visible = false;
             // 
             // ucUserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.gunaLinePanel2);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.gunaLinePanel1);
             this.Controls.Add(this.panelTop);
@@ -397,13 +300,6 @@
             this.gunaLinePanel1.ResumeLayout(false);
             this.gunaLinePanel1.PerformLayout();
             this.panel.ResumeLayout(false);
-            this.panelContainer.ResumeLayout(false);
-            this.gunaLinePanel4.ResumeLayout(false);
-            this.gunaLinePanel4.PerformLayout();
-            this.gunaLinePanel3.ResumeLayout(false);
-            this.gunaLinePanel3.PerformLayout();
-            this.gunaLinePanel2.ResumeLayout(false);
-            this.gunaLinePanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -420,16 +316,9 @@
         private Guna.UI.WinForms.GunaAdvenceButton btnManageEmployees;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private System.Windows.Forms.Panel panel;
-        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel2;
-        private Guna.UI.WinForms.GunaLabel gunaLabel4;
-        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel3;
-        private Guna.UI.WinForms.GunaLabel gunaLabel5;
-        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel4;
-        private Guna.UI.WinForms.GunaLabel gunaLabel6;
-        private System.Windows.Forms.Panel panelContainer;
-        private ucAccounts ucAccounts1;
-        private ucStudents ucStudents1;
         private ucEmployees ucEmployees1;
+        private ucStudents ucStudents1;
+        private ucAccounts ucAccounts1;
 
     }
 }

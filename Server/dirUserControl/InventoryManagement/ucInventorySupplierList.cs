@@ -6,21 +6,28 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Server.dirUserControl.InventoryManagement
 {
     public partial class ucInventorySupplierList : UserControl
     {
         public static ucInventorySupplierList mainInstance = null;
+        public string connectionString = string.Empty;
+        public string query = string.Empty;
+
         public ucInventorySupplierList()
         {
             mainInstance = this;
             InitializeComponent();
+            dirClasses.Database database = new dirClasses.Database();
+            this.connectionString = database.dbConnection();
         }
 
         private void ucInventorySupplierList_Load(object sender, EventArgs e)
         {
             loadData();
+            loadInventorySupplierCount();
         }
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
@@ -78,6 +85,29 @@ namespace Server.dirUserControl.InventoryManagement
             }
         }
 
-
+        public void loadInventorySupplierCount()
+        {
+            try
+            {
+                this.query = "SELECT COUNT(*) as supplierCount FROM InventorySuppliers";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lblTotalBusinessTypeCount.Text = reader["supplierCount"].ToString();
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on loading supplier: " + ex.Message, "Add Item");
+            }
+        }
     }
 }

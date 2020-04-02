@@ -147,7 +147,7 @@ namespace Server.dirUserControl.InventoryManagement
                                                         }
                                                         else
                                                         {
-                                                            if (rdbCondemned.Checked == false && rdbDefective.Checked == false && rdbWorking.Checked == false)
+                                                            if (rdbExpired.Checked == false && rdbSubscribed.Checked == false)
                                                             {
                                                                 MessageBox.Show("Please choose the current status of the item.", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                 hasError = true;
@@ -190,7 +190,15 @@ namespace Server.dirUserControl.InventoryManagement
                                                                     if (addItem.addSoftware(inventoryType, category, supplier, itemName, description, brand, model, licenseKey, quantity, unit, propertyNumber, location, dateAcquired, dateExpire, status, byteImage))
                                                                     {
                                                                         MessageBox.Show("The " + itemName.ToUpper() + " has been added!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                                        dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemData();
+                                                                        if (dirOtherForms.InventoryManagement.frmAddItems.request == "CameFromInventory")
+                                                                        {
+                                                                            dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemData();
+                                                                            dirUserControl.InventoryManagement.ucInventoryItems.mainInstance.loadItemCount();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            dirOtherForms.MaintenanceReport.frmFeedback.mainInstance.loadPeripheralsForReplace(category);
+                                                                        }
                                                                         ((Form)this.TopLevelControl).Close();
                                                                     }
                                                                     else
@@ -372,6 +380,18 @@ namespace Server.dirUserControl.InventoryManagement
             catch (Exception ex)
             {
                 MessageBox.Show("Error on loading department: " + ex.Message, "Add Item");
+            }
+        }
+
+        private void dtpExpirationDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpExpirationDate.Value >= DateTime.Now)
+            {
+                rdbSubscribed.Checked = true;
+            }
+            else if (dtpExpirationDate.Value < DateTime.Now)
+            {
+                rdbExpired.Checked = true;
             }
         }
     }
