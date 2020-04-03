@@ -35,7 +35,7 @@ namespace Server.dirUserControl.Messages
         private const int WM_HSCROLL = 0x114;
         private const int WM_VSCROLL = 0x115;
 
-        public int curtop = 10;
+        public int curtop = 5;
         ucBubble old_bubble = new ucBubble();
 
         public ucOldMessage()
@@ -55,7 +55,7 @@ namespace Server.dirUserControl.Messages
 
         private void ucOldMessage_Load(object sender, EventArgs e)
         {
-            
+            Guna.UI.Lib.GraphicsHelper.DrawLineShadow(panelContainer, Color.Black, 10, 10, Guna.UI.WinForms.VerHorAlign.HoriziontalTop, Guna.UI.WinForms.AddOrRemove.Add);
         }
 
         public void addMessageReceived(string message, string time)
@@ -93,6 +93,8 @@ namespace Server.dirUserControl.Messages
         {
             panelContainer.Controls.Clear();
             old_bubble.Top = 0 - old_bubble.Height + 5;
+            SetDoubleBuffered(panelContainer);
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -127,9 +129,11 @@ namespace Server.dirUserControl.Messages
                             {
                                 addMessageSent(message, time);
                             }
-                        }
 
+                            scrollDown();
+                        }
                         
+
                     }
                     conn.Close();
                 }
@@ -232,6 +236,52 @@ namespace Server.dirUserControl.Messages
         private void panelContainer_ControlAdded(object sender, ControlEventArgs e)
         {
             panelContainer.ScrollControlIntoView(e.Control);
+        }
+
+        private void timerLoadThisMessages_Tick(object sender, EventArgs e)
+        {
+            loadConversation();
+        }
+
+        public void startLoadingMessages()
+        {
+            timerLoadThisMessages.Start();
+        }
+
+        public void stopLoadingMessages()
+        {
+            timerLoadThisMessages.Stop();
+        }
+
+        public static void SetDoubleBuffered(System.Windows.Forms.Control c)
+        {
+            if (System.Windows.Forms.SystemInformation.TerminalServerSession)
+                return;
+            System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            aProp.SetValue(c, true, null);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
+        private void panelContainer_Scroll(object sender, ScrollEventArgs e)
+        {
+            VScrollProperties vs = panelContainer.VerticalScroll;
+            if (e.NewValue == vs.Maximum - vs.LargeChange + 1)
+            {
+                startLoadingMessages();
+            }
+            else
+            {
+                stopLoadingMessages();
+            }
         }
     }
 }

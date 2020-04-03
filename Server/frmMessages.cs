@@ -43,6 +43,7 @@ namespace Server
         public void loadLatestMessagesByUser()
         {
             flowLayoutPanel1.Controls.Clear();
+            SetDoubleBuffered(flowLayoutPanel1);
 
             try
             {
@@ -50,12 +51,12 @@ namespace Server
                 {
                     conn.Open();
                     this.query = "SELECT m.conversationID as conversationID, e.employeeID as employeeID, concat(e.firstName + ' ', e.lastName) as fullName, MAX(m.dateSend) as dateSend, " +
-                                 "CASE c.status WHEN 0 THEN 'Unread' ELSE 'Read' END as status, CAST(e.profilePicture as varbinary(max)) as profilePicture " +
+                                 "CASE c.seenBySender WHEN 0 THEN 'Unread' ELSE 'Read' END as seenBySender, CASE c.seenByReceiver WHEN 0 THEN 'Unread' ELSE 'Read' END as seenByReceiver, CAST(e.profilePicture as varbinary(max)) as profilePicture, MAX(m.sendBy) as sendBy " +
                                  "FROM Employees e " +
-                                 "INNER JOIN Messages m ON e.employeeID = m.receivedBy " +
+                                 "INNER JOIN Messages m ON e.employeeID = m.receivedBy or e.employeeID = m.sendBy " +
                                  "INNER JOIN Conversation c ON m.conversationID = c.conversationID " +
-                                 "WHERE m.sendBy=@employeeID " +
-                                 "GROUP BY e.employeeID, e.firstName, e.lastName, m.conversationID, c.status, CAST(e.profilePicture as varbinary(max)) " +
+                                 "WHERE (m.sendBy=@employeeID and m.receivedBy = e.employeeID) or (m.receivedBy=@employeeID and m.sendBy = e.employeeID) " +
+                                 "GROUP BY e.employeeID, e.firstName, e.lastName, m.conversationID, c.seenBySender, c.seenByReceiver, CAST(e.profilePicture as varbinary(max)) " +
                                  "ORDER BY dateSend DESC";
                     using (SqlCommand cmd1 = new SqlCommand(this.query, conn))
                     {
@@ -100,13 +101,25 @@ namespace Server
                             lblDate.Location = new Point(228, 27);
                             lblDate.Name = "lblDate";
 
-                            if (reader["status"].ToString() == "Unread")
+                            if (reader["sendBy"].ToString() == dirClasses.Session.username && reader["seenByReceiver"].ToString() == "Unread")
                             {
                                 lblName.Font = unread;
                                 lblEmployeeID.Font = unread;
                                 lblDate.Font = unread;
                             }
-                            else if (reader["status"].ToString() == "Read")
+                            else if (reader["sendBy"].ToString() == dirClasses.Session.username && reader["seenByReceiver"].ToString() == "Read")
+                            {
+                                lblName.Font = read;
+                                lblEmployeeID.Font = read;
+                                lblDate.Font = read;
+                            }
+                            else if (reader["sendBy"].ToString() != dirClasses.Session.username && reader["seenBySender"].ToString() == "Unread")
+                            {
+                                lblName.Font = unread;
+                                lblEmployeeID.Font = unread;
+                                lblDate.Font = unread;
+                            }
+                            else if (reader["sendBy"].ToString() != dirClasses.Session.username && reader["seenBySender"].ToString() == "Read")
                             {
                                 lblName.Font = read;
                                 lblEmployeeID.Font = read;
@@ -132,6 +145,7 @@ namespace Server
             }
         }
 
+        private bool hasSelected = false;
         private void pnl_Click(object sender, EventArgs e)
         {
             foreach (Panel a in flowLayoutPanel1.Controls)
@@ -142,7 +156,6 @@ namespace Server
             Panel pnl = (Panel)sender;
             pnl.BackColor = Color.FromArgb(231, 231, 231);
             string conversationID = pnl.Name;
-
             dirClasses.Message sendMessage = new dirClasses.Message();
             sendMessage.updateConversation(Guid.Parse(conversationID));
 
@@ -151,9 +164,11 @@ namespace Server
             dirUserControl.Messages.ucOldMessage.mainInstance.employeeID = pnl.Controls["lblEmployeeID"].Text;
             dirUserControl.Messages.ucOldMessage.mainInstance.loadConversation();
             dirUserControl.Messages.ucOldMessage.mainInstance.scrollDown();
-           /* ucOldMessage1.loadConversation();
-            ucOldMessage1.scrollDown();*/
+            ucOldMessage1.startLoadingMessages();
+            /* ucOldMessage1.loadConversation();
+             ucOldMessage1.scrollDown();*/
             ucOldMessage1.Visible = true;
+
         }
 
         private void btnComposeMessage_Click(object sender, EventArgs e)
@@ -167,6 +182,7 @@ namespace Server
             if (txtSearch.Text == "Search")
             {
                 txtSearch.Text = "";
+                stopReceivingMessages();
             }
         }
 
@@ -176,6 +192,7 @@ namespace Server
             {
                 txtSearch.Text = "Search";
                 loadLatestMessagesByUser();
+                startReceivingMessages();
             }
         }
 
@@ -188,13 +205,13 @@ namespace Server
                 using (SqlConnection conn = new SqlConnection(this.connectionString))
                 {
                     conn.Open();
-                    this.query = "SELECT m.conversationID as conversationID, e.employeeID as employeeID, concat(e.firstName + ' ', e.lastName) as fullName, MAX(m.dateSend) as dateSend, " +
-                                 "CASE c.status WHEN 0 THEN 'Unread' ELSE 'Read' END as status, CAST(e.profilePicture as varbinary(max)) as profilePicture " +
+                    this.query = "SELECT m.conversationID as conversationID, e.employeeID as employeeID, concat(e.firstName + ' ', e.lastName) as fullName, MAX(m.dateSend) as dateSend,  " +
+                                 "CASE c.seenBySender WHEN 0 THEN 'Unread' ELSE 'Read' END as seenBySender, CASE c.seenByReceiver WHEN 0 THEN 'Unread' ELSE 'Read' END as seenByReceiver, CAST(e.profilePicture as varbinary(max)) as profilePicture, MAX(m.sendBy) as sendBy " +
                                  "FROM Employees e " +
-                                 "INNER JOIN Messages m ON e.employeeID = m.receivedBy " +
+                                 "INNER JOIN Messages m ON e.employeeID = m.receivedBy or e.employeeID = m.sendBy " +
                                  "INNER JOIN Conversation c ON m.conversationID = c.conversationID " +
-                                 "WHERE e.firstName LIKE '" + text + "%' OR e.lastName LIKE '" + text + "%' AND m.sendBy=@employeeID " +
-                                 "GROUP BY e.employeeID, e.firstName, e.lastName, m.conversationID, c.status, CAST(e.profilePicture as varbinary(max)) " +
+                                 "WHERE (e.firstName LIKE '" + text + "%' OR e.lastName LIKE '" + text + "%') AND (m.sendBy=@employeeID OR m.receivedBy=@employeeID) " +
+                                 "GROUP BY e.employeeID, e.firstName, e.lastName, m.conversationID, c.seenBySender, c.seenByReceiver, CAST(e.profilePicture as varbinary(max)) " +
                                  "ORDER BY dateSend DESC";
                     using (SqlCommand cmd1 = new SqlCommand(this.query, conn))
                     {
@@ -280,5 +297,44 @@ namespace Server
             }
         }
 
+        public static void SetDoubleBuffered(System.Windows.Forms.Control c)
+        {
+            if (System.Windows.Forms.SystemInformation.TerminalServerSession)
+                return;
+            System.Reflection.PropertyInfo aProp = typeof(System.Windows.Forms.Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            aProp.SetValue(c, true, null);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
+        private void timerUpcomingMessages_Tick(object sender, EventArgs e)
+        {
+            loadLatestMessagesByUser();
+        }
+
+        public void startReceivingMessages()
+        {
+            timerUpcomingMessages.Start();
+        }
+
+        public void stopReceivingMessages()
+        {
+            timerUpcomingMessages.Stop();
+        }
+
+        private void frmMessages_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stopReceivingMessages();
+            ucOldMessage1.stopLoadingMessages();
+            frmMain.mainInstance.notifyMessages = true;
+        }
     }
 }

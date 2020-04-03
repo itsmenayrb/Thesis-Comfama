@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucBubble));
-            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.lblMessage = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // gunaElipse1
-            // 
-            this.gunaElipse1.Radius = 7;
-            this.gunaElipse1.TargetControl = this;
             // 
             // lblMessage
             // 
@@ -54,11 +47,11 @@
             // 
             // lblTime
             // 
-            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblTime.Location = new System.Drawing.Point(10, 74);
+            this.lblTime.Location = new System.Drawing.Point(10, 79);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(458, 20);
+            this.lblTime.Size = new System.Drawing.Size(458, 12);
             this.lblTime.TabIndex = 1;
             this.lblTime.Text = "label1";
             // 
@@ -69,6 +62,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(206)))), ((int)(((byte)(245)))));
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblMessage);
+            this.DoubleBuffered = true;
             this.Name = "ucBubble";
             this.Size = new System.Drawing.Size(480, 104);
             this.Resize += new System.EventHandler(this.ucBubble_Resize);
@@ -77,8 +71,6 @@
         }
 
         #endregion
-
-        private Guna.UI.WinForms.GunaElipse gunaElipse1;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Label lblTime;
     }

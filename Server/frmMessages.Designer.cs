@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMessages));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.btnComposeMessage = new Guna.UI.WinForms.GunaCircleButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -44,7 +45,7 @@
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaDragControl2 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.timerUpcomingMessages = new System.Windows.Forms.Timer(this.components);
             this.ucNewMessage1 = new Server.dirUserControl.Messages.ucNewMessage();
             this.ucOldMessage1 = new Server.dirUserControl.Messages.ucOldMessage();
             this.panelLeft.SuspendLayout();
@@ -69,6 +70,16 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(307, 612);
             this.panelLeft.TabIndex = 0;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(72, 61);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(164, 19);
+            this.gunaLabel1.TabIndex = 4;
+            this.gunaLabel1.Text = "Comfama-Message";
             // 
             // btnComposeMessage
             // 
@@ -225,15 +236,10 @@
             this.panelContainer.Size = new System.Drawing.Size(671, 578);
             this.panelContainer.TabIndex = 2;
             // 
-            // gunaLabel1
+            // timerUpcomingMessages
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(72, 61);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(164, 19);
-            this.gunaLabel1.TabIndex = 4;
-            this.gunaLabel1.Text = "Comfama-Message";
+            this.timerUpcomingMessages.Interval = 1000;
+            this.timerUpcomingMessages.Tick += new System.EventHandler(this.timerUpcomingMessages_Tick);
             // 
             // ucNewMessage1
             // 
@@ -266,9 +272,11 @@
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelLeft);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMessages";
             this.Text = "Messages";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMessages_FormClosing);
             this.Load += new System.EventHandler(this.frmMessages_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
@@ -298,5 +306,6 @@
         private dirUserControl.Messages.ucOldMessage ucOldMessage1;
         private Guna.UI.WinForms.GunaCircleButton btnComposeMessage;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private System.Windows.Forms.Timer timerUpcomingMessages;
     }
 }

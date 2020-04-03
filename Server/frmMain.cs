@@ -22,6 +22,7 @@ namespace Server
 
         private int lastEntryID = 0;
         private bool normalExit = false;
+        public bool notifyMessages = true;
         readonly List<string> appsUsed = new List<string>();
 
         public frmMain()
@@ -42,7 +43,6 @@ namespace Server
             pbProfilePicture.Image = Image.FromStream(new MemoryStream((Byte[])dirClasses.Session.profilePicture));
             lblEmployeeID.Text = dirClasses.Session.username;
             getLastEntryToLogout();
-            timerIncomingRequest.Start();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -359,7 +359,7 @@ namespace Server
             {
                 normalExit = true;
                 string application = String.Join(", ", appsUsed);
-                timerIncomingRequest.Stop();
+                stopMonitoringForIncomingRequest();
                 ucRemoteManagement1.StopServer();
                 dirClasses.Login logout = new dirClasses.Login();
                 logout.endUserSession();
@@ -377,7 +377,7 @@ namespace Server
             {
                 normalExit = true;
                 string application = String.Join(", ", appsUsed);
-                timerIncomingRequest.Stop();
+                stopMonitoringForIncomingRequest();
                 dirClasses.Login logout = new dirClasses.Login();
                 logout.endUserSession();
                 logout.logoutLastUserLogin(lastEntryID, application, "Normal");
@@ -467,6 +467,11 @@ namespace Server
         {
             incomingRequestAssistance();
             //checkApplicationOpenedByUser();
+
+            /*if (notifyMessages)
+            {
+                incomingMessages();
+            }*/
         }
 
         private void insertCapturedImage(Image _screen)
@@ -519,6 +524,16 @@ namespace Server
             timerCastScreenToClient.Stop();
         }
 
+        public void startMonitoringForIncomingRequest()
+        {
+            timerIncomingRequest.Start();
+        }
+
+        public void stopMonitoringForIncomingRequest()
+        {
+            timerIncomingRequest.Stop();
+        }
+
         public void checkApplicationOpenedByUser()
         {
             foreach (Process process in Process.GetProcesses())
@@ -543,7 +558,7 @@ namespace Server
                 logout.endUserSession();
                 logout.logoutLastUserLogin(lastEntryID, application, "Unexpected Shutdown");
                 logout.disconnectThisMachine();
-                Environment.Exit(0);
+                Application.Exit();
             }
         }
 
@@ -553,7 +568,49 @@ namespace Server
             if (fc != null)
                 fc.Close();
 
+            notifyMessages = false;
             new frmMessages().Show();
+            frmMessages.mainInstance.startReceivingMessages();
+        }
+
+        public void incomingMessages()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.connectionString))
+                {
+                    conn.Open();
+                    this.query = "SELECT m.dateSend as dateSend, CONCAT(e.firstName + ' ', e.lastName) as fullName FROM Messages m INNER JOIN Employees e ON m.sendBy = e.employeeID WHERE m.receivedBy=@receivedBy";
+                    using (SqlCommand cmd = new SqlCommand(this.query, conn))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@receivedBy", dirClasses.Session.username);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DateTime dateSend;
+                        while (reader.Read())
+                        {
+                            dateSend = Convert.ToDateTime(reader["dateSend"]);
+                            if (Math.Abs((DateTime.Now - dateSend).TotalSeconds) < .5)
+                            {
+                                string fullname = reader["fullName"].ToString();
+
+                                Notification toastNotification = new Notification("success", "Message", "You have a message from " + fullname, 5, dirClasses.FormAnimator.AnimationMethod.Slide, dirClasses.FormAnimator.AnimationDirection.Left);
+                                toastNotification.Show();
+                                dirClasses.Configuration.PlayNotificationSound("garden");
+                                break;
+                            }
+
+                        }
+
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on incoming messages: " + ex.Message);
+            }
         }
     }
 }

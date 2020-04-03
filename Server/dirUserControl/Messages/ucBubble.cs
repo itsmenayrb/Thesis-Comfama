@@ -33,7 +33,7 @@ namespace Server.dirUserControl.Messages
                 //incoming messages
                 this.BackColor = Color.FromArgb(245, 245, 245);
                 lblMessage.ForeColor = Color.Black;
-                lblTime.ForeColor = Color.Black;
+                lblTime.ForeColor = Color.Gray;
             }
 
             _setHeight();

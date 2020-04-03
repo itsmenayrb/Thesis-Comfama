@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRemoteManagement));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRemoteManagement));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
@@ -48,17 +49,27 @@
             this.btnLectureMode = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnSettings = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaLinePanel4 = new Guna.UI.WinForms.GunaLinePanel();
+            this.ucDetailedView1 = new Server.dirUserControl.RemoteManagement.ucDetailedView();
+            this.btnSelectDisplay = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaLabel14 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaPictureBox2 = new Guna.UI.WinForms.GunaPictureBox();
+            this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
+            this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
             this.cmsRemoteManagement = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.viewOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shutdownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.othersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewSpecificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerLoadPC = new System.Windows.Forms.Timer(this.components);
             this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblClientCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel5 = new Guna.UI.WinForms.GunaLinePanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblServerCount = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel9 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel6 = new Guna.UI.WinForms.GunaLinePanel();
@@ -80,32 +91,21 @@
             this.smallIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.largeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSelectDisplay = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaPictureBox2 = new Guna.UI.WinForms.GunaPictureBox();
-            this.gunaPictureBox3 = new Guna.UI.WinForms.GunaPictureBox();
-            this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
-            this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.ucDetailedView1 = new Server.dirUserControl.RemoteManagement.ucDetailedView();
-            this.othersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSpecificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTop.SuspendLayout();
             this.gunaLinePanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
             this.cmsRemoteManagement.SuspendLayout();
             this.gunaLinePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gunaLinePanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gunaLinePanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComputerCountByDepartment)).BeginInit();
             this.gunaLinePanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostReportedComputerUnit)).BeginInit();
             this.cmsSelectDisplay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -118,6 +118,40 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1417, 96);
             this.panelTop.TabIndex = 4;
+            // 
+            // gunaAdvenceButton1
+            // 
+            this.gunaAdvenceButton1.AnimationHoverSpeed = 0.07F;
+            this.gunaAdvenceButton1.AnimationSpeed = 0.03F;
+            this.gunaAdvenceButton1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaAdvenceButton1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.gunaAdvenceButton1.BorderColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton1.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.gunaAdvenceButton1.CheckedBorderColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton1.CheckedForeColor = System.Drawing.Color.White;
+            this.gunaAdvenceButton1.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.CheckedImage")));
+            this.gunaAdvenceButton1.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.gunaAdvenceButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaAdvenceButton1.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaAdvenceButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaAdvenceButton1.ForeColor = System.Drawing.Color.White;
+            this.gunaAdvenceButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.Image")));
+            this.gunaAdvenceButton1.ImageOffsetX = 15;
+            this.gunaAdvenceButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaAdvenceButton1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.gunaAdvenceButton1.Location = new System.Drawing.Point(-10, 38);
+            this.gunaAdvenceButton1.Name = "gunaAdvenceButton1";
+            this.gunaAdvenceButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.gunaAdvenceButton1.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton1.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaAdvenceButton1.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.OnHoverImage")));
+            this.gunaAdvenceButton1.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.gunaAdvenceButton1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton1.Radius = 8;
+            this.gunaAdvenceButton1.Size = new System.Drawing.Size(257, 46);
+            this.gunaAdvenceButton1.TabIndex = 2;
+            this.gunaAdvenceButton1.Text = "Remote Management";
+            this.gunaAdvenceButton1.TextOffsetX = 10;
             // 
             // gunaLabel2
             // 
@@ -192,6 +226,7 @@
             this.switchEnableLiveView.Name = "switchEnableLiveView";
             this.switchEnableLiveView.Size = new System.Drawing.Size(40, 22);
             this.switchEnableLiveView.TabIndex = 3;
+            this.switchEnableLiveView.CheckedChanged += new System.EventHandler(this.switchEnableLiveView_CheckedChanged);
             // 
             // gunaLabel8
             // 
@@ -298,6 +333,49 @@
             this.gunaLinePanel4.Size = new System.Drawing.Size(1365, 390);
             this.gunaLinePanel4.TabIndex = 8;
             // 
+            // ucDetailedView1
+            // 
+            this.ucDetailedView1.BackColor = System.Drawing.Color.White;
+            this.ucDetailedView1.Location = new System.Drawing.Point(22, 56);
+            this.ucDetailedView1.Name = "ucDetailedView1";
+            this.ucDetailedView1.Size = new System.Drawing.Size(1321, 310);
+            this.ucDetailedView1.TabIndex = 12;
+            this.ucDetailedView1.Visible = false;
+            // 
+            // btnSelectDisplay
+            // 
+            this.btnSelectDisplay.AnimationHoverSpeed = 0.07F;
+            this.btnSelectDisplay.AnimationSpeed = 0.03F;
+            this.btnSelectDisplay.BaseColor = System.Drawing.Color.White;
+            this.btnSelectDisplay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnSelectDisplay.BorderSize = 1;
+            this.btnSelectDisplay.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.btnSelectDisplay.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnSelectDisplay.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSelectDisplay.CheckedImage = null;
+            this.btnSelectDisplay.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnSelectDisplay.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSelectDisplay.FocusedColor = System.Drawing.Color.Empty;
+            this.btnSelectDisplay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSelectDisplay.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectDisplay.Image")));
+            this.btnSelectDisplay.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnSelectDisplay.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnSelectDisplay.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnSelectDisplay.Location = new System.Drawing.Point(1304, 11);
+            this.btnSelectDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSelectDisplay.Name = "btnSelectDisplay";
+            this.btnSelectDisplay.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSelectDisplay.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnSelectDisplay.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
+            this.btnSelectDisplay.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnSelectDisplay.OnHoverImage")));
+            this.btnSelectDisplay.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnSelectDisplay.OnPressedColor = System.Drawing.Color.Black;
+            this.btnSelectDisplay.Size = new System.Drawing.Size(39, 29);
+            this.btnSelectDisplay.TabIndex = 11;
+            this.btnSelectDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnSelectDisplay.Click += new System.EventHandler(this.btnSelectDisplay_Click);
+            // 
             // gunaLabel14
             // 
             this.gunaLabel14.AutoSize = true;
@@ -308,6 +386,39 @@
             this.gunaLabel14.Size = new System.Drawing.Size(116, 16);
             this.gunaLabel14.TabIndex = 10;
             this.gunaLabel14.Text = "COMPUTER UNITS";
+            // 
+            // gunaPictureBox2
+            // 
+            this.gunaPictureBox2.BaseColor = System.Drawing.Color.White;
+            this.gunaPictureBox2.Image = global::Server.Resource1.online_computer;
+            this.gunaPictureBox2.Location = new System.Drawing.Point(815, 14);
+            this.gunaPictureBox2.Name = "gunaPictureBox2";
+            this.gunaPictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.gunaPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaPictureBox2.TabIndex = 8;
+            this.gunaPictureBox2.TabStop = false;
+            // 
+            // gunaPictureBox3
+            // 
+            this.gunaPictureBox3.BaseColor = System.Drawing.Color.White;
+            this.gunaPictureBox3.Image = global::Server.Resource1.idle_computer;
+            this.gunaPictureBox3.Location = new System.Drawing.Point(928, 14);
+            this.gunaPictureBox3.Name = "gunaPictureBox3";
+            this.gunaPictureBox3.Size = new System.Drawing.Size(25, 25);
+            this.gunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaPictureBox3.TabIndex = 4;
+            this.gunaPictureBox3.TabStop = false;
+            // 
+            // gunaPictureBox1
+            // 
+            this.gunaPictureBox1.BaseColor = System.Drawing.Color.White;
+            this.gunaPictureBox1.Image = global::Server.Resource1.offline_computer;
+            this.gunaPictureBox1.Location = new System.Drawing.Point(995, 14);
+            this.gunaPictureBox1.Name = "gunaPictureBox1";
+            this.gunaPictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.gunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaPictureBox1.TabIndex = 3;
+            this.gunaPictureBox1.TabStop = false;
             // 
             // cmsRemoteManagement
             // 
@@ -328,35 +439,56 @@
             this.cmsRemoteManagement.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.cmsRemoteManagement.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.cmsRemoteManagement.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
-            this.cmsRemoteManagement.Size = new System.Drawing.Size(153, 136);
+            this.cmsRemoteManagement.Size = new System.Drawing.Size(143, 114);
             // 
             // viewOnlyToolStripMenuItem
             // 
             this.viewOnlyToolStripMenuItem.Name = "viewOnlyToolStripMenuItem";
-            this.viewOnlyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewOnlyToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.viewOnlyToolStripMenuItem.Text = "View Only";
             this.viewOnlyToolStripMenuItem.Click += new System.EventHandler(this.viewOnlyToolStripMenuItem_Click);
             // 
             // fullControlToolStripMenuItem
             // 
             this.fullControlToolStripMenuItem.Name = "fullControlToolStripMenuItem";
-            this.fullControlToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fullControlToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.fullControlToolStripMenuItem.Text = "Full Control";
             this.fullControlToolStripMenuItem.Click += new System.EventHandler(this.fullControlToolStripMenuItem_Click);
             // 
             // restartToolStripMenuItem
             // 
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.restartToolStripMenuItem.Text = "Restart";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
             // shutdownToolStripMenuItem
             // 
             this.shutdownToolStripMenuItem.Name = "shutdownToolStripMenuItem";
-            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shutdownToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.shutdownToolStripMenuItem.Text = "Shutdown";
             this.shutdownToolStripMenuItem.Click += new System.EventHandler(this.shutdownToolStripMenuItem_Click);
+            // 
+            // othersToolStripMenuItem
+            // 
+            this.othersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pingToolStripMenuItem,
+            this.viewSpecificationToolStripMenuItem});
+            this.othersToolStripMenuItem.Name = "othersToolStripMenuItem";
+            this.othersToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.othersToolStripMenuItem.Text = "Others";
+            // 
+            // pingToolStripMenuItem
+            // 
+            this.pingToolStripMenuItem.Name = "pingToolStripMenuItem";
+            this.pingToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.pingToolStripMenuItem.Text = "Ping";
+            // 
+            // viewSpecificationToolStripMenuItem
+            // 
+            this.viewSpecificationToolStripMenuItem.Name = "viewSpecificationToolStripMenuItem";
+            this.viewSpecificationToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.viewSpecificationToolStripMenuItem.Text = "View Specification";
             // 
             // timerLoadPC
             // 
@@ -378,6 +510,16 @@
             this.gunaLinePanel2.Name = "gunaLinePanel2";
             this.gunaLinePanel2.Size = new System.Drawing.Size(258, 158);
             this.gunaLinePanel2.TabIndex = 10;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // lblClientCount
             // 
@@ -417,6 +559,16 @@
             this.gunaLinePanel5.Name = "gunaLinePanel5";
             this.gunaLinePanel5.Size = new System.Drawing.Size(258, 158);
             this.gunaLinePanel5.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // lblServerCount
             // 
@@ -787,157 +939,6 @@
             this.largeIconToolStripMenuItem.Text = "Large Icon";
             this.largeIconToolStripMenuItem.Click += new System.EventHandler(this.largeIconToolStripMenuItem_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(184, 64);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(184, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnSelectDisplay
-            // 
-            this.btnSelectDisplay.AnimationHoverSpeed = 0.07F;
-            this.btnSelectDisplay.AnimationSpeed = 0.03F;
-            this.btnSelectDisplay.BaseColor = System.Drawing.Color.White;
-            this.btnSelectDisplay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.btnSelectDisplay.BorderSize = 1;
-            this.btnSelectDisplay.CheckedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
-            this.btnSelectDisplay.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnSelectDisplay.CheckedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnSelectDisplay.CheckedImage = null;
-            this.btnSelectDisplay.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnSelectDisplay.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnSelectDisplay.FocusedColor = System.Drawing.Color.Empty;
-            this.btnSelectDisplay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnSelectDisplay.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectDisplay.Image")));
-            this.btnSelectDisplay.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnSelectDisplay.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnSelectDisplay.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnSelectDisplay.Location = new System.Drawing.Point(1304, 11);
-            this.btnSelectDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSelectDisplay.Name = "btnSelectDisplay";
-            this.btnSelectDisplay.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnSelectDisplay.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnSelectDisplay.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.btnSelectDisplay.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("btnSelectDisplay.OnHoverImage")));
-            this.btnSelectDisplay.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnSelectDisplay.OnPressedColor = System.Drawing.Color.Black;
-            this.btnSelectDisplay.Size = new System.Drawing.Size(39, 29);
-            this.btnSelectDisplay.TabIndex = 11;
-            this.btnSelectDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnSelectDisplay.Click += new System.EventHandler(this.btnSelectDisplay_Click);
-            // 
-            // gunaPictureBox2
-            // 
-            this.gunaPictureBox2.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox2.Image = global::Server.Resource1.online_computer;
-            this.gunaPictureBox2.Location = new System.Drawing.Point(815, 14);
-            this.gunaPictureBox2.Name = "gunaPictureBox2";
-            this.gunaPictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.gunaPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaPictureBox2.TabIndex = 8;
-            this.gunaPictureBox2.TabStop = false;
-            // 
-            // gunaPictureBox3
-            // 
-            this.gunaPictureBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox3.Image = global::Server.Resource1.idle_computer;
-            this.gunaPictureBox3.Location = new System.Drawing.Point(928, 14);
-            this.gunaPictureBox3.Name = "gunaPictureBox3";
-            this.gunaPictureBox3.Size = new System.Drawing.Size(25, 25);
-            this.gunaPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaPictureBox3.TabIndex = 4;
-            this.gunaPictureBox3.TabStop = false;
-            // 
-            // gunaPictureBox1
-            // 
-            this.gunaPictureBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox1.Image = global::Server.Resource1.offline_computer;
-            this.gunaPictureBox1.Location = new System.Drawing.Point(995, 14);
-            this.gunaPictureBox1.Name = "gunaPictureBox1";
-            this.gunaPictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.gunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaPictureBox1.TabIndex = 3;
-            this.gunaPictureBox1.TabStop = false;
-            // 
-            // gunaAdvenceButton1
-            // 
-            this.gunaAdvenceButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaAdvenceButton1.AnimationSpeed = 0.03F;
-            this.gunaAdvenceButton1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaAdvenceButton1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.gunaAdvenceButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.gunaAdvenceButton1.CheckedBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.CheckedForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.CheckedImage")));
-            this.gunaAdvenceButton1.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.gunaAdvenceButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaAdvenceButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaAdvenceButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaAdvenceButton1.ForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.Image")));
-            this.gunaAdvenceButton1.ImageOffsetX = 15;
-            this.gunaAdvenceButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaAdvenceButton1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton1.Location = new System.Drawing.Point(-10, 38);
-            this.gunaAdvenceButton1.Name = "gunaAdvenceButton1";
-            this.gunaAdvenceButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(97)))), ((int)(((byte)(72)))));
-            this.gunaAdvenceButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.OnHoverImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.OnHoverImage")));
-            this.gunaAdvenceButton1.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.Radius = 8;
-            this.gunaAdvenceButton1.Size = new System.Drawing.Size(257, 46);
-            this.gunaAdvenceButton1.TabIndex = 2;
-            this.gunaAdvenceButton1.Text = "Remote Management";
-            this.gunaAdvenceButton1.TextOffsetX = 10;
-            // 
-            // ucDetailedView1
-            // 
-            this.ucDetailedView1.BackColor = System.Drawing.Color.White;
-            this.ucDetailedView1.Location = new System.Drawing.Point(22, 56);
-            this.ucDetailedView1.Name = "ucDetailedView1";
-            this.ucDetailedView1.Size = new System.Drawing.Size(1321, 310);
-            this.ucDetailedView1.TabIndex = 12;
-            this.ucDetailedView1.Visible = false;
-            // 
-            // othersToolStripMenuItem
-            // 
-            this.othersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pingToolStripMenuItem,
-            this.viewSpecificationToolStripMenuItem});
-            this.othersToolStripMenuItem.Name = "othersToolStripMenuItem";
-            this.othersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.othersToolStripMenuItem.Text = "Others";
-            // 
-            // pingToolStripMenuItem
-            // 
-            this.pingToolStripMenuItem.Name = "pingToolStripMenuItem";
-            this.pingToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.pingToolStripMenuItem.Text = "Ping";
-            // 
-            // viewSpecificationToolStripMenuItem
-            // 
-            this.viewSpecificationToolStripMenuItem.Name = "viewSpecificationToolStripMenuItem";
-            this.viewSpecificationToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.viewSpecificationToolStripMenuItem.Text = "View Specification";
-            // 
             // ucRemoteManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -957,11 +958,16 @@
             this.panelTop.PerformLayout();
             this.gunaLinePanel4.ResumeLayout(false);
             this.gunaLinePanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
             this.cmsRemoteManagement.ResumeLayout(false);
             this.gunaLinePanel2.ResumeLayout(false);
             this.gunaLinePanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gunaLinePanel5.ResumeLayout(false);
             this.gunaLinePanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gunaLinePanel6.ResumeLayout(false);
             this.gunaLinePanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComputerCountByDepartment)).EndInit();
@@ -969,11 +975,6 @@
             this.gunaLinePanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostReportedComputerUnit)).EndInit();
             this.cmsSelectDisplay.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

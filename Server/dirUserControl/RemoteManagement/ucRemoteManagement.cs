@@ -541,5 +541,10 @@ namespace Server.dirUserControl.RemoteManagement
             loadComputerCountByDepartment(5);
             loadMostReportedComputerUnit(5);
         }
+
+        private void switchEnableLiveView_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

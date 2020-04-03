@@ -49,7 +49,7 @@ namespace Server.dirClasses
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error on sending message: " + ex.Message);
+                MessageBox.Show("Error on checking conversation: " + ex.Message);
             }
             return conversationID;
         }
@@ -93,12 +93,14 @@ namespace Server.dirClasses
                 {
                     conn.Open();
 
-                    this.query = "INSERT INTO Conversation (conversationID, status) VALUES (@conversationID, @status)";
+                    this.query = "INSERT INTO Conversation (conversationID, seenBySender, seenByReceiver, dateSeenBySender) VALUES (@conversationID, @seenBySender, @seenByReceiver, @dateSeenBySender)";
                     using (SqlCommand cmd = new SqlCommand(this.query, conn))
                     {
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@conversationID", conversationID);
-                        cmd.Parameters.AddWithValue("@status", 0);
+                        cmd.Parameters.AddWithValue("@seenBySender", 1);
+                        cmd.Parameters.AddWithValue("@seenByReceiver", 0);
+                        cmd.Parameters.AddWithValue("@dateSeenBySender", DateTime.Now);
                         cmd.ExecuteNonQuery();
 
                     }
@@ -121,12 +123,14 @@ namespace Server.dirClasses
                 {
                     conn.Open();
 
-                    this.query = "UPDATE Conversation SET status=@status WHERE conversationID=@conversationID";
+                    this.query = "UPDATE Conversation SET seenBySender=@seenBySender, seenByReceiver=@seenByReceiver, dateSeenBySender=@dateSeenBySender WHERE conversationID=@conversationID";
                     using (SqlCommand cmd = new SqlCommand(this.query, conn))
                     {
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@conversationID", existingConversationID);
-                        cmd.Parameters.AddWithValue("@status", 1);
+                        cmd.Parameters.AddWithValue("@seenBySender", 1);
+                        cmd.Parameters.AddWithValue("@seenByReceiver", 0);
+                        cmd.Parameters.AddWithValue("@dateSeenBySender", DateTime.Now);
                         cmd.ExecuteNonQuery();
 
                     }

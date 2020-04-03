@@ -66,7 +66,9 @@ namespace Server
                                 logHistory();
                                 startUserSession();
                                 connectThisMachine();
-                                new frmMain().Show();
+                                frmMain show = new frmMain();
+                                show.Show();
+                                show.startMonitoringForIncomingRequest();
                                 this.Close();
                             }
                             else
@@ -283,7 +285,7 @@ namespace Server
             DialogResult res = MessageBox.Show("Exit application?", "Comfama", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == System.Windows.Forms.DialogResult.Yes)
             {
-                Environment.Exit(0);
+                Application.Exit();
             }
         }
     }

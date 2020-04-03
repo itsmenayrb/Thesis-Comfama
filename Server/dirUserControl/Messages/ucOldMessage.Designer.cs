@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucOldMessage));
             this.lblName = new Guna.UI.WinForms.GunaLabel();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
@@ -35,6 +36,7 @@
             this.btnSend = new Guna.UI.WinForms.GunaAdvenceButton();
             this.lblEmployeeID = new Guna.UI.WinForms.GunaLabel();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.timerLoadThisMessages = new System.Windows.Forms.Timer(this.components);
             this.ucBubble1 = new Server.dirUserControl.Messages.ucBubble();
             this.gunaElipsePanel1.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -131,21 +133,28 @@
             // 
             // panelContainer
             // 
-            this.panelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContainer.AutoScroll = true;
             this.panelContainer.Controls.Add(this.ucBubble1);
             this.panelContainer.Location = new System.Drawing.Point(0, 72);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(671, 417);
             this.panelContainer.TabIndex = 5;
+            this.panelContainer.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panelContainer_Scroll);
             this.panelContainer.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.panelContainer_ControlAdded);
+            // 
+            // timerLoadThisMessages
+            // 
+            this.timerLoadThisMessages.Interval = 1000;
+            this.timerLoadThisMessages.Tick += new System.EventHandler(this.timerLoadThisMessages_Tick);
             // 
             // ucBubble1
             // 
             this.ucBubble1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(206)))), ((int)(((byte)(245)))));
             this.ucBubble1.Location = new System.Drawing.Point(23, 15);
             this.ucBubble1.Name = "ucBubble1";
-            this.ucBubble1.Size = new System.Drawing.Size(283, 194);
+            this.ucBubble1.Size = new System.Drawing.Size(283, 186);
             this.ucBubble1.TabIndex = 0;
             this.ucBubble1.Visible = false;
             // 
@@ -158,6 +167,7 @@
             this.Controls.Add(this.lblEmployeeID);
             this.Controls.Add(this.gunaElipsePanel1);
             this.Controls.Add(this.lblName);
+            this.DoubleBuffered = true;
             this.Name = "ucOldMessage";
             this.Size = new System.Drawing.Size(671, 578);
             this.Load += new System.EventHandler(this.ucOldMessage_Load);
@@ -177,5 +187,6 @@
         private Guna.UI.WinForms.GunaLabel lblEmployeeID;
         private System.Windows.Forms.Panel panelContainer;
         private ucBubble ucBubble1;
+        private System.Windows.Forms.Timer timerLoadThisMessages;
     }
 }

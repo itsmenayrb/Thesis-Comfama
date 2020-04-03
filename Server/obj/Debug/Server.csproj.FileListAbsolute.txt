@@ -139,3 +139,4 @@ C:\Users\user\Documents\GitHub\Thesis-Comfama\Server\obj\Debug\Server.csproj.Cor
 C:\Users\user\Documents\GitHub\Thesis-Comfama\Server\obj\Debug\Server.csproj.CopyComplete
 C:\Users\user\Documents\GitHub\Thesis-Comfama\Server\obj\Debug\Server.exe
 C:\Users\user\Documents\GitHub\Thesis-Comfama\Server\obj\Debug\Server.pdb
+C:\Users\user\Documents\GitHub\Thesis-Comfama\Server\obj\Debug\Server.csprojAssemblyReference.cache
