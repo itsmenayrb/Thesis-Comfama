@@ -38,10 +38,7 @@ namespace Server
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(panelContainer, Color.Black, 50, 3, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
             Guna.UI.Lib.GraphicsHelper.DrawLineShadow(panelTop, Color.Black, 50, 3, Guna.UI.WinForms.VerHorAlign.VerticalLeft, Guna.UI.WinForms.AddOrRemove.Add);
-
-            lblName.Text = dirClasses.Session.firstName + " " + dirClasses.Session.lastName;
-            pbProfilePicture.Image = Image.FromStream(new MemoryStream((Byte[])dirClasses.Session.profilePicture));
-            lblEmployeeID.Text = dirClasses.Session.username;
+            loadPersonalData();
             getLastEntryToLogout();
         }
 
@@ -67,6 +64,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 10;
             btnRemoteManagement.LineLeft = 0;
@@ -94,6 +92,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 10;
@@ -121,6 +120,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -148,6 +148,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnAuditTrail.LineLeft = 0;
             btnDashboard.LineLeft = 0;
@@ -175,6 +176,7 @@ namespace Server
             ucLoginHistory1.Visible = true;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -202,6 +204,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -229,6 +232,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -256,6 +260,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = true;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -283,6 +288,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = true;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -310,6 +316,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -337,6 +344,7 @@ namespace Server
             ucLoginHistory1.Visible = false;
             ucArchived1.Visible = false;
             ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = false;
 
             btnDashboard.LineLeft = 0;
             btnRemoteManagement.LineLeft = 0;
@@ -350,6 +358,41 @@ namespace Server
             btnAuditTrail.LineLeft = 0;
 
             ucRemoteManagement1.StopServer();
+        }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+            ucDashboard1.Visible = false;
+            ucInventoryManagement1.Visible = false;
+            ucUserManagement1.Visible = false;
+            ucRemoteManagement1.Visible = false;
+            ucBackupRestore1.Visible = false;
+            ucSettings1.Visible = false;
+            ucMaintenanceReport1.Visible = false;
+            ucLoginHistory1.Visible = false;
+            ucArchived1.Visible = false;
+            ucAuditTrail1.Visible = false;
+            ucProfile1.Visible = true;
+
+            btnDashboard.LineLeft = 0;
+            btnRemoteManagement.LineLeft = 0;
+            btnInventoryManagement.LineLeft = 0;
+            btnMaintenanceReport.LineLeft = 0;
+            btnLoginHistory.LineLeft = 0;
+            btnManageUsers.LineLeft = 0;
+            btnBackupAndRestore.LineLeft = 0;
+            btnArchived.LineLeft = 0;
+            btnAbout.LineLeft = 0;
+            btnAuditTrail.LineLeft = 0;
+
+            ucRemoteManagement1.StopServer();
+        }
+
+        public void loadPersonalData()
+        {
+            lblName.Text = dirClasses.Session.firstName + " " + dirClasses.Session.lastName;
+            pbProfilePicture.Image = Image.FromStream(new MemoryStream((Byte[])dirClasses.Session.profilePicture));
+            lblEmployeeID.Text = dirClasses.Session.username;
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -612,5 +655,7 @@ namespace Server
                 MessageBox.Show("Error on incoming messages: " + ex.Message);
             }
         }
+
+        
     }
 }

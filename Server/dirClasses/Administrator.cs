@@ -43,7 +43,7 @@ namespace Server.dirClasses
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                System.Windows.MessageBox.Show("Error: " + ex.Message);
                 return false;
             }
         }

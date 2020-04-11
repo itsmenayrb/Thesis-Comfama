@@ -104,7 +104,7 @@ namespace Server.dirClasses
             return false;
         }
 
-        private void setEmployeeInformation(string username)
+        public void setEmployeeInformation(string username)
         {
             try
             {
@@ -112,7 +112,12 @@ namespace Server.dirClasses
                 {
                     conn.Open();
 
-                    this.query = "SELECT * FROM Employees WHERE employeeID=@employeeID";
+                    this.query = "SELECT e.firstName as firstName, e.middleName as middleName, e.lastName as lastName, e.profilePicture as profilePicture, " +
+                                    "d.department as department, p.position as position " +
+                                 "FROM Employees e " +
+                                 "INNER JOIN Departments d ON e.department = d.id " +
+                                 "INNER JOIN Positions p ON e.position = p.id " +
+                                 "WHERE e.employeeID=@employeeID";
                     using (SqlCommand cmd = new SqlCommand(this.query, conn))
                     {
                         cmd.Parameters.Clear();
@@ -124,8 +129,8 @@ namespace Server.dirClasses
                             dirClasses.Session.firstName = reader["firstName"].ToString();
                             dirClasses.Session.middleName = reader["middleName"].ToString();
                             dirClasses.Session.lastName = reader["lastName"].ToString();
-                            dirClasses.Session.department = Convert.ToInt32(reader["department"].ToString());
-                            dirClasses.Session.position = Convert.ToInt32(reader["position"].ToString());
+                            dirClasses.Session.department = reader["department"].ToString();
+                            dirClasses.Session.position = reader["position"].ToString();
                             dirClasses.Session.profilePicture = (Byte[])reader["profilePicture"];
                         }
 

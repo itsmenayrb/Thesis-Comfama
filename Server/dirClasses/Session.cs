@@ -23,8 +23,8 @@ namespace Server.dirClasses
         public static string status { get; set; }
 
         //employee
-        public static int department { get; set; }
-        public static int position { get; set; }
+        public static string department { get; set; }
+        public static string position { get; set; }
 
         //machine
         public static string machineName { get; set; }

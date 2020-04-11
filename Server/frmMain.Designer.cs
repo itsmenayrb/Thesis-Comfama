@@ -54,6 +54,7 @@
             this.btnRemoteManagement = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnDashboard = new Guna.UI.WinForms.GunaAdvenceButton();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.ucProfile1 = new Server.dirUserControl.Profile.ucProfile();
             this.ucAuditTrail1 = new Server.dirUserControl.AuditTrail.ucAuditTrail();
             this.ucArchived1 = new Server.dirUserControl.Archived.ucArchived();
             this.ucLoginHistory1 = new Server.dirUserControl.LoginHistory.ucLoginHistory();
@@ -343,6 +344,7 @@
             this.lblName.Size = new System.Drawing.Size(137, 17);
             this.lblName.TabIndex = 18;
             this.lblName.Text = "Philip Andrew Ersando";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // pbProfilePicture
             // 
@@ -676,6 +678,7 @@
             // 
             // panelContainer
             // 
+            this.panelContainer.Controls.Add(this.ucProfile1);
             this.panelContainer.Controls.Add(this.ucAuditTrail1);
             this.panelContainer.Controls.Add(this.ucArchived1);
             this.panelContainer.Controls.Add(this.ucLoginHistory1);
@@ -691,6 +694,16 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1417, 848);
             this.panelContainer.TabIndex = 2;
+            // 
+            // ucProfile1
+            // 
+            this.ucProfile1.BackColor = System.Drawing.Color.White;
+            this.ucProfile1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucProfile1.Location = new System.Drawing.Point(0, 0);
+            this.ucProfile1.Name = "ucProfile1";
+            this.ucProfile1.Size = new System.Drawing.Size(1417, 848);
+            this.ucProfile1.TabIndex = 10;
+            this.ucProfile1.Visible = false;
             // 
             // ucAuditTrail1
             // 
@@ -787,10 +800,13 @@
             // 
             this.ucDashboard1.BackColor = System.Drawing.Color.White;
             this.ucDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDashboard1.Labels = new string[] {
+        "April"};
             this.ucDashboard1.Location = new System.Drawing.Point(0, 0);
             this.ucDashboard1.Name = "ucDashboard1";
             this.ucDashboard1.Size = new System.Drawing.Size(1417, 848);
             this.ucDashboard1.TabIndex = 0;
+            this.ucDashboard1.YFormatter = null;
             // 
             // cmsMain
             // 
@@ -918,6 +934,7 @@
         private dirUserControl.LoginHistory.ucLoginHistory ucLoginHistory1;
         private dirUserControl.Archived.ucArchived ucArchived1;
         private dirUserControl.AuditTrail.ucAuditTrail ucAuditTrail1;
+        private dirUserControl.Profile.ucProfile ucProfile1;
     }
 }
 

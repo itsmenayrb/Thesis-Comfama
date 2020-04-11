@@ -44,12 +44,24 @@
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\..\..\Downloads\Compressed\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net40\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net40\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net40\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +70,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dbThesisComfamaDataSet.Designer.cs">
@@ -79,6 +93,7 @@
     <Compile Include="dirClasses\Login.cs" />
     <Compile Include="dirClasses\Message.cs" />
     <Compile Include="dirClasses\NativeMethods.cs" />
+    <Compile Include="dirClasses\Profile.cs" />
     <Compile Include="dirClasses\Session.cs" />
     <Compile Include="dirClasses\Settings.cs" />
     <Compile Include="dirClasses\Student.cs" />
@@ -228,6 +243,24 @@
     <Compile Include="dirReports\InventoryManagement\frmGenerateReport.Designer.cs">
       <DependentUpon>frmGenerateReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="dirUserControl\About\ucAboutComfama.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\About\ucAboutComfama.Designer.cs">
+      <DependentUpon>ucAboutComfama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\About\ucAboutContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\About\ucAboutContainer.Designer.cs">
+      <DependentUpon>ucAboutContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\About\ucAboutCvSU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\About\ucAboutCvSU.Designer.cs">
+      <DependentUpon>ucAboutCvSU.cs</DependentUpon>
+    </Compile>
     <Compile Include="dirUserControl\Archived\ucArchived.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -354,6 +387,30 @@
     <Compile Include="dirUserControl\Messages\ucOldMessage.Designer.cs">
       <DependentUpon>ucOldMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="dirUserControl\Profile\ucAccountInformation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucAccountInformation.Designer.cs">
+      <DependentUpon>ucAccountInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucPersonalInformation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucPersonalInformation.Designer.cs">
+      <DependentUpon>ucPersonalInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucProfile.Designer.cs">
+      <DependentUpon>ucProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucWelcomeMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Profile\ucWelcomeMessage.Designer.cs">
+      <DependentUpon>ucWelcomeMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="dirUserControl\RemoteManagement\ucDetailedView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -377,6 +434,12 @@
     </Compile>
     <Compile Include="dirUserControl\Settings\ucSettings.Designer.cs">
       <DependentUpon>ucSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucSpecification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dirUserControl\Settings\ucSpecification.Designer.cs">
+      <DependentUpon>ucSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="dirUserControl\UserManagement\ucAccounts.cs">
       <SubType>UserControl</SubType>
@@ -407,6 +470,12 @@
     </Compile>
     <Compile Include="frmActivateAccount.designer.cs">
       <DependentUpon>frmActivateAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackground.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackground.Designer.cs">
+      <DependentUpon>frmBackground.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCreateAdministrator.cs">
       <SubType>Form</SubType>
@@ -530,6 +599,15 @@
       <DependentUpon>frmGenerateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dirReports\InventoryManagement\InventoryManagementReport.rdlc" />
+    <EmbeddedResource Include="dirUserControl\About\ucAboutComfama.resx">
+      <DependentUpon>ucAboutComfama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\About\ucAboutContainer.resx">
+      <DependentUpon>ucAboutContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\About\ucAboutCvSU.resx">
+      <DependentUpon>ucAboutCvSU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\Archived\ucArchived.resx">
       <DependentUpon>ucArchived.cs</DependentUpon>
     </EmbeddedResource>
@@ -593,6 +671,18 @@
     <EmbeddedResource Include="dirUserControl\Messages\ucOldMessage.resx">
       <DependentUpon>ucOldMessage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Profile\ucAccountInformation.resx">
+      <DependentUpon>ucAccountInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Profile\ucPersonalInformation.resx">
+      <DependentUpon>ucPersonalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Profile\ucProfile.resx">
+      <DependentUpon>ucProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Profile\ucWelcomeMessage.resx">
+      <DependentUpon>ucWelcomeMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\RemoteManagement\ucDetailedView.resx">
       <DependentUpon>ucDetailedView.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,6 +694,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\Settings\ucSettings.resx">
       <DependentUpon>ucSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dirUserControl\Settings\ucSpecification.resx">
+      <DependentUpon>ucSpecification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dirUserControl\UserManagement\ucAccounts.resx">
       <DependentUpon>ucAccounts.cs</DependentUpon>
@@ -619,6 +712,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmActivateAccount.resx">
       <DependentUpon>frmActivateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackground.resx">
+      <DependentUpon>frmBackground.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCreateAdministrator.resx">
       <DependentUpon>frmCreateAdministrator.cs</DependentUpon>

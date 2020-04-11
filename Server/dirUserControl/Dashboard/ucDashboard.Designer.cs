@@ -43,9 +43,22 @@
             this.gunaLinePanel2 = new Guna.UI.WinForms.GunaLinePanel();
             this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel3 = new Guna.UI.WinForms.GunaLinePanel();
+            this.gunaLinePanel4 = new Guna.UI.WinForms.GunaLinePanel();
+            this.pieChartPCStatus = new LiveCharts.WinForms.PieChart();
+            this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLinePanel5 = new Guna.UI.WinForms.GunaLinePanel();
+            this.pieChartPCCount = new LiveCharts.WinForms.PieChart();
+            this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
+            this.lineChartMaintenanceReport = new LiveCharts.WinForms.CartesianChart();
+            this.gunaLinePanel6 = new Guna.UI.WinForms.GunaLinePanel();
+            this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
+            this.cbTotalMaintenanceReport = new Guna.UI.WinForms.GunaComboBox();
             this.panelTop.SuspendLayout();
             this.gunaLinePanel1.SuspendLayout();
             this.gunaLinePanel2.SuspendLayout();
+            this.gunaLinePanel4.SuspendLayout();
+            this.gunaLinePanel5.SuspendLayout();
+            this.gunaLinePanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaAdvenceButton1
@@ -225,11 +238,143 @@
             this.gunaLinePanel3.Size = new System.Drawing.Size(357, 117);
             this.gunaLinePanel3.TabIndex = 7;
             // 
+            // gunaLinePanel4
+            // 
+            this.gunaLinePanel4.Controls.Add(this.pieChartPCStatus);
+            this.gunaLinePanel4.Controls.Add(this.gunaLabel5);
+            this.gunaLinePanel4.LineBottom = 1;
+            this.gunaLinePanel4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.gunaLinePanel4.LineLeft = 1;
+            this.gunaLinePanel4.LineRight = 1;
+            this.gunaLinePanel4.LineStyle = System.Windows.Forms.BorderStyle.None;
+            this.gunaLinePanel4.LineTop = 1;
+            this.gunaLinePanel4.Location = new System.Drawing.Point(25, 225);
+            this.gunaLinePanel4.Name = "gunaLinePanel4";
+            this.gunaLinePanel4.Size = new System.Drawing.Size(275, 201);
+            this.gunaLinePanel4.TabIndex = 8;
+            // 
+            // pieChartPCStatus
+            // 
+            this.pieChartPCStatus.Location = new System.Drawing.Point(3, 39);
+            this.pieChartPCStatus.Name = "pieChartPCStatus";
+            this.pieChartPCStatus.Size = new System.Drawing.Size(269, 148);
+            this.pieChartPCStatus.TabIndex = 9;
+            this.pieChartPCStatus.Text = "pieChart1";
+            // 
+            // gunaLabel5
+            // 
+            this.gunaLabel5.AutoSize = true;
+            this.gunaLabel5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel5.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel5.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel5.Name = "gunaLabel5";
+            this.gunaLabel5.Size = new System.Drawing.Size(116, 16);
+            this.gunaLabel5.TabIndex = 2;
+            this.gunaLabel5.Text = "COMPUTER STATUS";
+            // 
+            // gunaLinePanel5
+            // 
+            this.gunaLinePanel5.Controls.Add(this.pieChartPCCount);
+            this.gunaLinePanel5.Controls.Add(this.gunaLabel6);
+            this.gunaLinePanel5.LineBottom = 1;
+            this.gunaLinePanel5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.gunaLinePanel5.LineLeft = 1;
+            this.gunaLinePanel5.LineRight = 1;
+            this.gunaLinePanel5.LineStyle = System.Windows.Forms.BorderStyle.None;
+            this.gunaLinePanel5.LineTop = 1;
+            this.gunaLinePanel5.Location = new System.Drawing.Point(306, 225);
+            this.gunaLinePanel5.Name = "gunaLinePanel5";
+            this.gunaLinePanel5.Size = new System.Drawing.Size(290, 201);
+            this.gunaLinePanel5.TabIndex = 9;
+            // 
+            // pieChartPCCount
+            // 
+            this.pieChartPCCount.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pieChartPCCount.Location = new System.Drawing.Point(3, 39);
+            this.pieChartPCCount.Name = "pieChartPCCount";
+            this.pieChartPCCount.Size = new System.Drawing.Size(284, 148);
+            this.pieChartPCCount.TabIndex = 9;
+            this.pieChartPCCount.Text = "pieChart1";
+            // 
+            // gunaLabel6
+            // 
+            this.gunaLabel6.AutoSize = true;
+            this.gunaLabel6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel6.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel6.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel6.Name = "gunaLabel6";
+            this.gunaLabel6.Size = new System.Drawing.Size(218, 16);
+            this.gunaLabel6.TabIndex = 2;
+            this.gunaLabel6.Text = "COMPUTER COUNT PER DEPARTMENT";
+            // 
+            // lineChartMaintenanceReport
+            // 
+            this.lineChartMaintenanceReport.Location = new System.Drawing.Point(22, 47);
+            this.lineChartMaintenanceReport.Name = "lineChartMaintenanceReport";
+            this.lineChartMaintenanceReport.Size = new System.Drawing.Size(745, 348);
+            this.lineChartMaintenanceReport.TabIndex = 10;
+            this.lineChartMaintenanceReport.Text = "cartesianChart1";
+            // 
+            // gunaLinePanel6
+            // 
+            this.gunaLinePanel6.Controls.Add(this.cbTotalMaintenanceReport);
+            this.gunaLinePanel6.Controls.Add(this.lineChartMaintenanceReport);
+            this.gunaLinePanel6.Controls.Add(this.gunaLabel7);
+            this.gunaLinePanel6.LineBottom = 1;
+            this.gunaLinePanel6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(235)))), ((int)(((byte)(238)))));
+            this.gunaLinePanel6.LineLeft = 1;
+            this.gunaLinePanel6.LineRight = 1;
+            this.gunaLinePanel6.LineStyle = System.Windows.Forms.BorderStyle.None;
+            this.gunaLinePanel6.LineTop = 1;
+            this.gunaLinePanel6.Location = new System.Drawing.Point(602, 225);
+            this.gunaLinePanel6.Name = "gunaLinePanel6";
+            this.gunaLinePanel6.Size = new System.Drawing.Size(790, 418);
+            this.gunaLinePanel6.TabIndex = 11;
+            // 
+            // gunaLabel7
+            // 
+            this.gunaLabel7.AutoSize = true;
+            this.gunaLabel7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel7.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel7.Location = new System.Drawing.Point(19, 18);
+            this.gunaLabel7.Name = "gunaLabel7";
+            this.gunaLabel7.Size = new System.Drawing.Size(180, 16);
+            this.gunaLabel7.TabIndex = 2;
+            this.gunaLabel7.Text = "TOTAL MAINTENANCE REPORT";
+            // 
+            // cbTotalMaintenanceReport
+            // 
+            this.cbTotalMaintenanceReport.BackColor = System.Drawing.Color.Transparent;
+            this.cbTotalMaintenanceReport.BaseColor = System.Drawing.Color.White;
+            this.cbTotalMaintenanceReport.BorderColor = System.Drawing.Color.Silver;
+            this.cbTotalMaintenanceReport.BorderSize = 1;
+            this.cbTotalMaintenanceReport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTotalMaintenanceReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTotalMaintenanceReport.FocusedColor = System.Drawing.Color.Empty;
+            this.cbTotalMaintenanceReport.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTotalMaintenanceReport.ForeColor = System.Drawing.Color.Black;
+            this.cbTotalMaintenanceReport.FormattingEnabled = true;
+            this.cbTotalMaintenanceReport.Items.AddRange(new object[] {
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Yearly"});
+            this.cbTotalMaintenanceReport.Location = new System.Drawing.Point(668, 15);
+            this.cbTotalMaintenanceReport.Name = "cbTotalMaintenanceReport";
+            this.cbTotalMaintenanceReport.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbTotalMaintenanceReport.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cbTotalMaintenanceReport.Size = new System.Drawing.Size(99, 23);
+            this.cbTotalMaintenanceReport.StartIndex = 2;
+            this.cbTotalMaintenanceReport.TabIndex = 11;
+            // 
             // ucDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.gunaLinePanel6);
+            this.Controls.Add(this.gunaLinePanel5);
+            this.Controls.Add(this.gunaLinePanel4);
             this.Controls.Add(this.gunaAdvenceButton1);
             this.Controls.Add(this.gunaLinePanel3);
             this.Controls.Add(this.gunaLinePanel2);
@@ -244,6 +389,12 @@
             this.gunaLinePanel1.PerformLayout();
             this.gunaLinePanel2.ResumeLayout(false);
             this.gunaLinePanel2.PerformLayout();
+            this.gunaLinePanel4.ResumeLayout(false);
+            this.gunaLinePanel4.PerformLayout();
+            this.gunaLinePanel5.ResumeLayout(false);
+            this.gunaLinePanel5.PerformLayout();
+            this.gunaLinePanel6.ResumeLayout(false);
+            this.gunaLinePanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +414,15 @@
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel2;
         private Guna.UI.WinForms.GunaLabel gunaLabel4;
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel3;
+        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel4;
+        private Guna.UI.WinForms.GunaLabel gunaLabel5;
+        private LiveCharts.WinForms.PieChart pieChartPCStatus;
+        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel5;
+        private LiveCharts.WinForms.PieChart pieChartPCCount;
+        private Guna.UI.WinForms.GunaLabel gunaLabel6;
+        private LiveCharts.WinForms.CartesianChart lineChartMaintenanceReport;
+        private Guna.UI.WinForms.GunaLinePanel gunaLinePanel6;
+        private Guna.UI.WinForms.GunaLabel gunaLabel7;
+        private Guna.UI.WinForms.GunaComboBox cbTotalMaintenanceReport;
     }
 }
